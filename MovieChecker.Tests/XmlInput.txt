@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<planeta-kino>
+    <city>kiev</city>
+    <lang>ua</lang>
+    <movies>
+        <movie id="2075" url="http://planetakino.ua/movies/storojevaya_zastava/">
+            <title>Сторожова застава (0+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-11-01</dt-end>
+        </movie>
+        <movie id="2640" url="http://planetakino.ua/movies/american_made/">
+            <title>Баррі Сіл: Король контрабанди (16+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-11-08</dt-end>
+        </movie>
+        <movie id="2774" url="http://planetakino.ua/movies/borg-mcenroe/">
+            <title>Борг проти Макінроя (12+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2737" url="http://planetakino.ua/movies/my_little_pony_the_movie/">
+            <title>My Little Pony у кіно (0+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-11-01</dt-end>
+        </movie>
+        <movie id="2761" url="http://planetakino.ua/movies/mark_felt_the_tan_who_brought_down_the_white_house/">
+            <title>Вотерґейт: Падіння Білого дому (12+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2769" url="http://planetakino.ua/movies/golovna_rol_zavtra_svyato/">
+            <title>Головна роль, Завтра свято (мовою оригіналу) (12+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2733" url="http://planetakino.ua/movies/lady-macbeth/">
+            <title>Леді Макбет (16+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2779" url="http://planetakino.ua/movies/une_femme_douce/">
+            <title>Лагідна (мовою оригіналу) (16+)</title>
+            <dt-start>2017-10-12</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2344" url="http://planetakino.ua/movies/blade_runner_2049/">
+            <title>Той, хто біжить по лезу 2049 (16+)</title>
+            <dt-start>2017-10-05</dt-start>
+            <dt-end>2017-11-01</dt-end>
+        </movie>
+        <movie id="2697" url="http://planetakino.ua/movies/renegades/">
+            <title>Шибайголови (16+)</title>
+            <dt-start>2017-10-05</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2692" url="http://planetakino.ua/movies/american-assassin/">
+            <title>Американський убивця (16+)</title>
+            <dt-start>2017-09-28</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2425" url="http://planetakino.ua/movies/priputni/">
+            <title>Припутні (16+)</title>
+            <dt-start>2017-09-28</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2336" url="http://planetakino.ua/movies/kingsman_the_golden_circle/">
+            <title>Кінгсман: Золоте кільце (16+)</title>
+            <dt-start>2017-09-21</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2708" url="http://planetakino.ua/movies/madame/">
+            <title>Мадам (12+)</title>
+            <dt-start>2017-09-14</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2724" url="http://planetakino.ua/movies/mother/">
+            <title>Мати! (16+)</title>
+            <dt-start>2017-09-14</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2340" url="http://planetakino.ua/movies/it/">
+            <title>Воно (16+)</title>
+            <dt-start>2017-09-07</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2674" url="http://planetakino.ua/movies/terminator_2_judgment_day/">
+            <title>Термінатор 2: Судний день (16+)</title>
+            <dt-start>2017-08-24</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2206" url="http://planetakino.ua/movies/valerian_and_the_city_of_a_thousand_planets/">
+            <title>Валеріан та місто тисячі планет (12+)</title>
+            <dt-start>2017-08-10</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2193" url="http://planetakino.ua/movies/dunkirk/">
+            <title>Дюнкерк (12+)</title>
+            <dt-start>2017-07-20</dt-start>
+            <dt-end>2017-10-18</dt-end>
+        </movie>
+        <movie id="2759" url="http://planetakino.ua/movies/bethany/">
+            <title>Будинок моїх кошмарів</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2758" url="http://planetakino.ua/movies/gangsterdam/">
+            <title>Ґанґстердам</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2352" url="http://planetakino.ua/movies/geostorm/">
+            <title>Геошторм</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-11-08</dt-end>
+        </movie>
+        <movie id="2748" url="http://planetakino.ua/movies/geostorm_original/">
+            <title>Geostorm (мовою оригіналу)</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2676" url="http://planetakino.ua/movies/good_time/">
+            <title>Гарні часи</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2762" url="http://planetakino.ua/movies/kimi-no-na-wa/">
+            <title>Твоє імя (мовою оригіналу)</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2768" url="http://planetakino.ua/movies/liberation-day/">
+            <title>День звільнення (мовою оригіналу) (12+)</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+        <movie id="2812" url="http://planetakino.ua/movies/pearl_jam_lets_play_two/">
+            <title>Pearl Jam - Lets Play Two (мовою оригіналу) (12+)</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-19</dt-end>
+        </movie>
+        <movie id="2707" url="http://planetakino.ua/movies/the_limehouse_golem/">
+            <title>Голем</title>
+            <dt-start>2017-10-19</dt-start>
+            <dt-end>2017-10-25</dt-end>
+        </movie>
+    </movies>
+    <showtimes>
+        <day date="2017-10-17">
+            <show full-date="2017-10-17 10:15:00" time="10:15" theatre-id="imax-kiev" movie-id="2737" hall-id="220" technology="Cinetech+2D" order-url=""/>
+            <show full-date="2017-10-17 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2737" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404189&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 15:00:00" time="15:00" theatre-id="imax-kiev" movie-id="2737" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404185&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 17:00:00" time="17:00" theatre-id="imax-kiev" movie-id="2737" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404186&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 17:55:00" time="17:55" theatre-id="imax-kiev" movie-id="2737" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404198&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 11:30:00" time="11:30" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url=""/>
+            <show full-date="2017-10-17 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404179&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 12:45:00" time="12:45" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404221&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 13:45:00" time="13:45" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404175&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 14:45:00" time="14:45" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404180&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 15:00:00" time="15:00" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404222&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 15:45:00" time="15:45" theatre-id="imax-kiev" movie-id="2640" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404197&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 16:30:00" time="16:30" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404176&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 17:15:00" time="17:15" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404181&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 17:15:00" time="17:15" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404223&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 18:00:00" time="18:00" theatre-id="imax-kiev" movie-id="2640" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404192&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 18:30:00" time="18:30" theatre-id="imax-kiev" movie-id="2640" hall-id="215" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404172&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404177&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2640" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404187&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:30:00" time="19:30" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404182&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:30:00" time="19:30" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404224&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 21:00:00" time="21:00" theatre-id="imax-kiev" movie-id="2640" hall-id="215" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404173&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 21:30:00" time="21:30" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404178&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 21:45:00" time="21:45" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404225&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 22:00:00" time="22:00" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404183&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 22:45:00" time="22:45" theatre-id="imax-kiev" movie-id="2640" hall-id="221" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405756&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 23:15:00" time="23:15" theatre-id="imax-kiev" movie-id="2640" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404205&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 23:30:00" time="23:30" theatre-id="imax-kiev" movie-id="2640" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405762&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 00:15:00" time="00:15" theatre-id="imax-kiev" movie-id="2640" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405942&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 13:45:00" time="13:45" theatre-id="imax-kiev" movie-id="2774" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404196&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:45:00" time="19:45" theatre-id="imax-kiev" movie-id="2774" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404199&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 00:25:00" time="00:25" theatre-id="imax-kiev" movie-id="2774" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405950&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 11:45:00" time="11:45" theatre-id="imax-kiev" movie-id="2761" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404195&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 16:00:00" time="16:00" theatre-id="imax-kiev" movie-id="2761" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404191&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 22:40:00" time="22:40" theatre-id="imax-kiev" movie-id="2761" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404194&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 00:15:00" time="00:15" theatre-id="imax-kiev" movie-id="2761" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405955&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 18:00:00" time="18:00" theatre-id="imax-kiev" movie-id="2769" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=395077&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 20:30:00" time="20:30" theatre-id="imax-kiev" movie-id="2779" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404204&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 20:15:00" time="20:15" theatre-id="imax-kiev" movie-id="2733" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404210&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 12:15:00" time="12:15" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404213&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 14:30:00" time="14:30" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404214&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 16:45:00" time="16:45" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404215&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404216&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 21:15:00" time="21:15" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404217&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 10:00:00" time="10:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url=""/>
+            <show full-date="2017-10-17 11:00:00" time="11:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url=""/>
+            <show full-date="2017-10-17 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2344" hall-id="215" technology="RE'LUX-3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404170&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2344" hall-id="212" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404184&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 13:00:00" time="13:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403508&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 13:45:00" time="13:45" theatre-id="imax-kiev" movie-id="2344" hall-id="221" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404218&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 14:00:00" time="14:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=404166&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 15:00:00" time="15:00" theatre-id="imax-kiev" movie-id="2344" hall-id="215" technology="RE'LUX-3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404171&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 16:00:00" time="16:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403509&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 16:45:00" time="16:45" theatre-id="imax-kiev" movie-id="2344" hall-id="221" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404219&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 17:00:00" time="17:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=404167&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403510&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 19:45:00" time="19:45" theatre-id="imax-kiev" movie-id="2344" hall-id="221" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404220&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 20:00:00" time="20:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=404168&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 21:10:00" time="21:10" theatre-id="imax-kiev" movie-id="2344" hall-id="212" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404188&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 22:00:00" time="22:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403511&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 23:00:00" time="23:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=404169&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 14:00:00" time="14:00" theatre-id="imax-kiev" movie-id="2697" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404190&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 22:00:00" time="22:00" theatre-id="imax-kiev" movie-id="2692" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404211&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 11:30:00" time="11:30" theatre-id="imax-kiev" movie-id="2425" hall-id="221" technology="Cinetech+2D" order-url=""/>
+            <show full-date="2017-10-18 00:15:00" time="00:15" theatre-id="imax-kiev" movie-id="2425" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405960&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 10:30:00" time="10:30" theatre-id="imax-kiev" movie-id="2377" hall-id="219" technology="Cinetech+3D" order-url=""/>
+            <show full-date="2017-10-17 11:15:00" time="11:15" theatre-id="imax-kiev" movie-id="2336" hall-id="218" technology="Cinetech+2D" order-url=""/>
+            <show full-date="2017-10-17 21:45:00" time="21:45" theatre-id="imax-kiev" movie-id="2336" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404200&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 14:00:00" time="14:00" theatre-id="imax-kiev" movie-id="2708" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404202&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 15:15:00" time="15:15" theatre-id="imax-kiev" movie-id="2724" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404208&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 20:10:00" time="20:10" theatre-id="imax-kiev" movie-id="2340" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404193&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 17:30:00" time="17:30" theatre-id="imax-kiev" movie-id="2674" hall-id="219" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404209&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 12:30:00" time="12:30" theatre-id="imax-kiev" movie-id="2206" hall-id="219" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404207&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-17 15:45:00" time="15:45" theatre-id="imax-kiev" movie-id="2193" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404203&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+        </day>
+        <day date="2017-10-18">
+            <show full-date="2017-10-18 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2737" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404247&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 15:00:00" time="15:00" theatre-id="imax-kiev" movie-id="2737" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404243&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 17:00:00" time="17:00" theatre-id="imax-kiev" movie-id="2737" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404244&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 17:55:00" time="17:55" theatre-id="imax-kiev" movie-id="2737" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404255&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404237&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 12:45:00" time="12:45" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404275&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 13:45:00" time="13:45" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404233&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 14:45:00" time="14:45" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404238&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 15:00:00" time="15:00" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404276&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 15:45:00" time="15:45" theatre-id="imax-kiev" movie-id="2640" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404254&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 16:30:00" time="16:30" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404234&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 17:15:00" time="17:15" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404239&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 17:15:00" time="17:15" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404277&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 18:00:00" time="18:00" theatre-id="imax-kiev" movie-id="2640" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404250&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 18:30:00" time="18:30" theatre-id="imax-kiev" movie-id="2640" hall-id="215" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404231&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404235&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2640" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404245&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:30:00" time="19:30" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404240&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:30:00" time="19:30" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404278&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 21:00:00" time="21:00" theatre-id="imax-kiev" movie-id="2640" hall-id="215" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404232&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 21:30:00" time="21:30" theatre-id="imax-kiev" movie-id="2640" hall-id="216" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404236&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 21:45:00" time="21:45" theatre-id="imax-kiev" movie-id="2640" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404279&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 22:00:00" time="22:00" theatre-id="imax-kiev" movie-id="2640" hall-id="217" technology="RE'LUX-2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404241&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 22:45:00" time="22:45" theatre-id="imax-kiev" movie-id="2640" hall-id="221" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405757&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 23:15:00" time="23:15" theatre-id="imax-kiev" movie-id="2640" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404261&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 23:30:00" time="23:30" theatre-id="imax-kiev" movie-id="2640" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405763&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 00:15:00" time="00:15" theatre-id="imax-kiev" movie-id="2640" hall-id="212" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405943&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 13:45:00" time="13:45" theatre-id="imax-kiev" movie-id="2774" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404253&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:45:00" time="19:45" theatre-id="imax-kiev" movie-id="2774" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404256&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 00:25:00" time="00:25" theatre-id="imax-kiev" movie-id="2774" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405951&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 16:00:00" time="16:00" theatre-id="imax-kiev" movie-id="2761" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404249&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 22:40:00" time="22:40" theatre-id="imax-kiev" movie-id="2761" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404252&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 00:15:00" time="00:15" theatre-id="imax-kiev" movie-id="2761" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405957&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 18:00:00" time="18:00" theatre-id="imax-kiev" movie-id="2769" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=395078&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 20:30:00" time="20:30" theatre-id="imax-kiev" movie-id="2779" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404260&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 20:15:00" time="20:15" theatre-id="imax-kiev" movie-id="2733" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404265&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 12:15:00" time="12:15" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404267&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 14:30:00" time="14:30" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404268&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 16:45:00" time="16:45" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404269&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404270&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 21:15:00" time="21:15" theatre-id="imax-kiev" movie-id="2075" hall-id="220" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404271&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2344" hall-id="215" technology="RE'LUX-3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404229&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 12:00:00" time="12:00" theatre-id="imax-kiev" movie-id="2344" hall-id="212" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404242&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 13:00:00" time="13:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403512&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 13:45:00" time="13:45" theatre-id="imax-kiev" movie-id="2344" hall-id="221" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404272&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 14:00:00" time="14:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=404226&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 15:00:00" time="15:00" theatre-id="imax-kiev" movie-id="2344" hall-id="215" technology="RE'LUX-3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404230&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 16:00:00" time="16:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403513&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 16:45:00" time="16:45" theatre-id="imax-kiev" movie-id="2344" hall-id="221" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404273&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 17:00:00" time="17:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=404227&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403514&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 19:45:00" time="19:45" theatre-id="imax-kiev" movie-id="2344" hall-id="221" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404274&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 21:10:00" time="21:10" theatre-id="imax-kiev" movie-id="2344" hall-id="212" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404246&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 22:00:00" time="22:00" theatre-id="imax-kiev" movie-id="2344" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403515&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 23:00:00" time="23:00" theatre-id="imax-kiev" movie-id="2344" hall-id="210" technology="4dx-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=404228&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 14:00:00" time="14:00" theatre-id="imax-kiev" movie-id="2697" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404248&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 22:00:00" time="22:00" theatre-id="imax-kiev" movie-id="2692" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404266&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 00:15:00" time="00:15" theatre-id="imax-kiev" movie-id="2425" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=405961&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 21:45:00" time="21:45" theatre-id="imax-kiev" movie-id="2336" hall-id="214" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404257&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 14:00:00" time="14:00" theatre-id="imax-kiev" movie-id="2708" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404258&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 15:15:00" time="15:15" theatre-id="imax-kiev" movie-id="2724" hall-id="219" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404263&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 20:10:00" time="20:10" theatre-id="imax-kiev" movie-id="2340" hall-id="213" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404251&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 17:30:00" time="17:30" theatre-id="imax-kiev" movie-id="2674" hall-id="219" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404264&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 12:30:00" time="12:30" theatre-id="imax-kiev" movie-id="2206" hall-id="219" technology="Cinetech+3D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404262&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-18 15:45:00" time="15:45" theatre-id="imax-kiev" movie-id="2193" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=404259&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+        </day>
+        <day date="2017-10-19">
+            <show full-date="2017-10-19 20:00:00" time="20:00" theatre-id="imax-kiev" movie-id="2812" hall-id="211" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=403261&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 10:00:00" time="10:00" theatre-id="imax-kiev" movie-id="2352" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403516&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 12:15:00" time="12:15" theatre-id="imax-kiev" movie-id="2352" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403517&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 14:30:00" time="14:30" theatre-id="imax-kiev" movie-id="2352" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403518&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 16:45:00" time="16:45" theatre-id="imax-kiev" movie-id="2352" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403519&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 19:00:00" time="19:00" theatre-id="imax-kiev" movie-id="2352" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403520&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 21:15:00" time="21:15" theatre-id="imax-kiev" movie-id="2352" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403521&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 23:30:00" time="23:30" theatre-id="imax-kiev" movie-id="2352" hall-id="16" technology="imax-3d" order-url="https://cabinet.planetakino.ua/hall/?show_id=403522&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+            <show full-date="2017-10-19 18:00:00" time="18:00" theatre-id="imax-kiev" movie-id="2768" hall-id="218" technology="Cinetech+2D" order-url="https://cabinet.planetakino.ua/hall/?show_id=395079&amp;theatre_id=imax-kiev&amp;lang=ua"/>
+        </day>
+    </showtimes>
+</planeta-kino>

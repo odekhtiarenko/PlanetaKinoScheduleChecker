@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker", "MovieChecker\PlanetaKinoScheduleChecker.csproj", "{BDB7F0E8-1FCC-467E-8CA8-4DDD8AB366A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.Tests", "MovieChecker.Tests\PlanetaKinoScheduleChecker.Tests.csproj", "{E93E4320-EFDF-414E-86A4-B1E2399BE619}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.ServiceTests", "MovieChecker.ServiceTests\PlanetaKinoScheduleChecker.ServiceTests.csproj", "{F1A79B24-6F9C-47BF-80FB-AE6D089E8778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.Domain", "MovieChecker.Domain\PlanetaKinoScheduleChecker.Domain.csproj", "{5E31E53C-E96A-40D8-8300-099FA8F3E33E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.Bot.Domain", "PlanetaKinoScheduleChecker.Bot.Domain\PlanetaKinoScheduleChecker.Bot.Domain.csproj", "{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDB7F0E8-1FCC-467E-8CA8-4DDD8AB366A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDB7F0E8-1FCC-467E-8CA8-4DDD8AB366A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDB7F0E8-1FCC-467E-8CA8-4DDD8AB366A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDB7F0E8-1FCC-467E-8CA8-4DDD8AB366A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93E4320-EFDF-414E-86A4-B1E2399BE619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93E4320-EFDF-414E-86A4-B1E2399BE619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93E4320-EFDF-414E-86A4-B1E2399BE619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93E4320-EFDF-414E-86A4-B1E2399BE619}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A79B24-6F9C-47BF-80FB-AE6D089E8778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A79B24-6F9C-47BF-80FB-AE6D089E8778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A79B24-6F9C-47BF-80FB-AE6D089E8778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A79B24-6F9C-47BF-80FB-AE6D089E8778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E31E53C-E96A-40D8-8300-099FA8F3E33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E31E53C-E96A-40D8-8300-099FA8F3E33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E31E53C-E96A-40D8-8300-099FA8F3E33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E31E53C-E96A-40D8-8300-099FA8F3E33E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75E41671-1A26-4DA0-ABCC-78D8BAD13BE9}
+	EndGlobalSection
+EndGlobal
