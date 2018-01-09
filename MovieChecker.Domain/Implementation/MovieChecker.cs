@@ -37,6 +37,8 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
                     _logger.Info($"checking subs {movies.Count()}");
                     foreach (var movie in movies)
                     {
+                        _logger.Info($"Start check for movie {movie.Id} {movie.Title}");
+
                         if (CheckIfTicketsAvailiable(movie.Id))
                         {
                             OnRelease(this, new MoveRealesReleaseArgs(movie.Id));
