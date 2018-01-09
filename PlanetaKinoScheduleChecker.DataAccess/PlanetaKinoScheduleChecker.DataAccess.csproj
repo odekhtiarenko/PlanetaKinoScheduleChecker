@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E31E53C-E96A-40D8-8300-099FA8F3E33E}</ProjectGuid>
+    <ProjectGuid>{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PlanetaKinoScheduleChecker.Domain</RootNamespace>
-    <AssemblyName>PlanetaKinoScheduleChecker.Domain</AssemblyName>
+    <RootNamespace>PlanetaKinoScheduleChecker.DataAccess</RootNamespace>
+    <AssemblyName>PlanetaKinoScheduleChecker.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,16 +31,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,27 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ICinemaInfoParser.cs" />
-    <Compile Include="Abstract\IMovieChecker.cs" />
-    <Compile Include="Abstract\IMovieCheckerClient.cs" />
-    <Compile Include="Implementation\CinemaInfoParser.cs" />
-    <Compile Include="Implementation\MoveRealesReleaseArgs.cs" />
-    <Compile Include="Implementation\MovieChecker.cs" />
-    <Compile Include="Implementation\MovieCheckerClient.cs" />
-    <Compile Include="Models\CinemaInfo.cs" />
-    <Compile Include="Models\ShowTime.cs" />
+    <Compile Include="IMovieRepository.cs" />
+    <Compile Include="IUserSubscriptionRepository.cs" />
+    <Compile Include="MovieRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserSubscriptionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PlanetaKinoScheduleChecker.DataAccess\PlanetaKinoScheduleChecker.DataAccess.csproj">
-      <Project>{0f530b06-f86d-45c7-8f43-bb1a0eb56b53}</Project>
-      <Name>PlanetaKinoScheduleChecker.DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PlanetaKinoScheduleChecker.Models\PlanetaKinoScheduleChecker.Data.csproj">
-      <Project>{226c8d1d-e005-4f14-be26-bc772ef697a2}</Project>
+      <Project>{226C8D1D-E005-4F14-BE26-BC772EF697A2}</Project>
       <Name>PlanetaKinoScheduleChecker.Data</Name>
     </ProjectReference>
   </ItemGroup>

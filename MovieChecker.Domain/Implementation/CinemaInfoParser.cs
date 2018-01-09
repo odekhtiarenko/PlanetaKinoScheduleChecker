@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using PlanetaKinoScheduleChecker.Data;
 using PlanetaKinoScheduleChecker.Domain.Abstract;
 using PlanetaKinoScheduleChecker.Domain.Models;
 
@@ -18,8 +19,8 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
             var language = elements.SingleOrDefault(x => x.Name == "lang");
             var movieElements = elements.SingleOrDefault(x => x.Name == "movies").Elements();
             var showTimeElements = elements.SingleOrDefault(x => x.Name == "showtimes").Elements();
-            IEnumerable<Movie> movies = ParseMovies(movieElements);
-            IEnumerable<ShowTime> showTimes = ParseShowTimes(showTimeElements);
+            var movies = ParseMovies(movieElements);
+            var showTimes = ParseShowTimes(showTimeElements);
             cinemaInfo = new CinemaInfo() { City = city.Value, Language = language.Value, Movies = movies, ShowTimes = showTimes };
             return parseResult;
         }
@@ -52,7 +53,12 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
                 var title = element.Elements().SingleOrDefault(e => e.Name == "title").Value;
                 var start = DateTime.Parse(element.Elements().SingleOrDefault(e => e.Name == "dt-start").Value);
                 var end = DateTime.Parse(element.Elements().SingleOrDefault(e => e.Name == "dt-end").Value);
-                yield return new Movie() { Id = id, Title = title, EndDate = end, StartDate = start };
+                var movie = new Movie();
+                movie.Id = id;
+                movie.Title = title;
+                movie.EndDate = end;
+                movie.StartDate = start;
+                yield return movie;
             }
         }
     }

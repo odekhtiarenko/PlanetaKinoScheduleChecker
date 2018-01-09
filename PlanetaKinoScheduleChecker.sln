@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker", "MovieChecker\PlanetaKinoScheduleChecker.csproj", "{BDB7F0E8-1FCC-467E-8CA8-4DDD8AB366A9}"
 EndProject
@@ -12,6 +12,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.Domain", "MovieChecker.Domain\PlanetaKinoScheduleChecker.Domain.csproj", "{5E31E53C-E96A-40D8-8300-099FA8F3E33E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.Bot.Domain", "PlanetaKinoScheduleChecker.Bot.Domain\PlanetaKinoScheduleChecker.Bot.Domain.csproj", "{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.DataAccess", "PlanetaKinoScheduleChecker.DataAccess\PlanetaKinoScheduleChecker.DataAccess.csproj", "{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.Data", "PlanetaKinoScheduleChecker.Models\PlanetaKinoScheduleChecker.Data.csproj", "{226C8D1D-E005-4F14-BE26-BC772EF697A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226C8D1D-E005-4F14-BE26-BC772EF697A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226C8D1D-E005-4F14-BE26-BC772EF697A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226C8D1D-E005-4F14-BE26-BC772EF697A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226C8D1D-E005-4F14-BE26-BC772EF697A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
