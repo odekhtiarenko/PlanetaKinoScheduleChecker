@@ -77,24 +77,6 @@ namespace PlanetaKinoScheduleChecker.Bot.Domain
             return string.Join($", {Environment.NewLine}", MovieChecker.GetCinemaInfo().Movies.Select(x => x.Title).ToArray());
         }
 
-        private static Task SubscribeUserForMovie(long chatId, string trim)
-        {
-            var id = Int32.Parse(trim);
-            var movieId = MovieChecker.GetCinemaInfo().Movies.FirstOrDefault(x => x.CinemaMovieId == id);
-            if (movieId != null)
-            {
-                var movie = MovieRepository.GetMovieByExternalId(movieId.CinemaMovieId);
-                int idM = 0;
-                if (movie == null)
-                    idM = MovieRepository.AddMovie(new Movie() { CinemaMovieId = movieId.CinemaMovieId, Title = movieId.Title, EndDate = movieId.EndDate, StartDate = movieId.StartDate });
-
-                SubscriptionRepository.Add(new UserSubscription() { ChatId = chatId,   MovieId = movie?.MovieId ?? idM });
-                Logger.Info($"Subsciption added for Movie {movieId} {trim} and User {chatId}");
-            }
-
-            return Task.FromResult(0);
-        }
-
         private static async void BotOnCallbackQueryReceived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
         {
             await SubscribeUserForMovie(callbackQueryEventArgs.CallbackQuery.From.Id, callbackQueryEventArgs.CallbackQuery.Data);
@@ -125,6 +107,30 @@ namespace PlanetaKinoScheduleChecker.Bot.Domain
             }
 
             Logger.Info($"Finished sending notification for movie {args.MovieId} subs count {userSubscriptions.Count()}");
+        }
+
+        private static Task SubscribeUserForMovie(long chatId, string trim)
+        {
+            var id = Int32.Parse(trim);
+            var movieId = MovieChecker.GetCinemaInfo().Movies.FirstOrDefault(x => x.CinemaMovieId == id);
+            if (movieId != null)
+            {
+                var movie = MovieRepository.GetMovieByExternalId(movieId.CinemaMovieId);
+                int idM = 0;
+                if (movie == null)
+                    idM = MovieRepository.AddMovie(new Movie() { CinemaMovieId = movieId.CinemaMovieId, Title = movieId.Title, EndDate = movieId.EndDate, StartDate = movieId.StartDate });
+                try
+                {
+                    SubscriptionRepository.Add(new UserSubscription() { ChatId = chatId, MovieId = movie?.MovieId ?? idM });
+                    Logger.Info($"Subsciption added for Movie {movieId} {trim} and User {chatId}");
+                }
+                catch (DuplicateUserSubscriptionError e)
+                {
+                  
+                }
+            }
+
+            return Task.FromResult(0);
         }
 
         private static void SendNotification(UserSubscription userSubscription)

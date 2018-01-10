@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Dapper;
 using PlanetaKinoScheduleChecker.Data;
 
@@ -8,16 +9,24 @@ namespace PlanetaKinoScheduleChecker.DataAccess
     {
         public int Add(UserSubscription userSubscription)
         {
+
+
             using (var conn = ConnectionFactory.GetConnection())
             {
+                var entry = conn.QuerySingleOrDefault<UserSubscription>(SqlText.SubscriptionCheck,
+                    new { userSubscription.MovieId, userSubscription.ChatId });
+
+                if (entry != null)
+                    throw new DuplicateUserSubscriptionError();
+
                 var affectedRows = conn.Execute(SqlText.InsertSubscription,
-                    new
-                    {
-                        userSubscription.ChatId,
-                        userSubscription.MovieId,
-                        userSubscription.City,
-                        userSubscription.IsNotified
-                    });
+                                new
+                                {
+                                    userSubscription.ChatId,
+                                    userSubscription.MovieId,
+                                    userSubscription.City,
+                                    userSubscription.IsNotified
+                                });
                 return affectedRows;
             }
         }
@@ -46,5 +55,9 @@ namespace PlanetaKinoScheduleChecker.DataAccess
                 return userSubscriptions;
             }
         }
+    }
+
+    public class DuplicateUserSubscriptionError : Exception
+    {
     }
 }
