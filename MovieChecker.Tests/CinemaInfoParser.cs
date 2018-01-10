@@ -27,7 +27,7 @@ namespace PlanetaKinoScheduleChecker.Tests
             Assert.That(_cinemaInfo.Language, Is.EqualTo("ua"));
             Assert.That(_cinemaInfo.Movies, !Is.Null);
             Assert.That(_cinemaInfo.Movies.Count(), Is.EqualTo(Regex.Matches(input, "</movie>").Count));
-            Assert.That(_cinemaInfo.Movies.Any(x => x.MovieId == 2640), Is.True);
+            Assert.That(_cinemaInfo.Movies.Any(x => x.CinemaMovieId == 2640), Is.True);
             Assert.That(_cinemaInfo.Movies.Any(x => x.Title == "Валеріан та місто тисячі планет (12+)"), Is.True);
             Assert.That(_cinemaInfo.ShowTimes, !Is.Null);
             Assert.That(_cinemaInfo.ShowTimes.Any(x => x.MovieId == 2737), Is.True);

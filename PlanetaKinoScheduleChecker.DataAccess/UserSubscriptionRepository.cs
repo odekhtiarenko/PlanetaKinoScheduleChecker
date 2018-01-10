@@ -30,7 +30,7 @@ namespace PlanetaKinoScheduleChecker.DataAccess
                 var affectedRows = conn.Execute(SqlText.UpdateSubscription,
                     new
                     {
-                        userSubscription.Id,
+                        userSubscription.UserSubscriptionId,
                         userSubscription.ChatId,
                         userSubscription.MovieId,
                         userSubscription.City,

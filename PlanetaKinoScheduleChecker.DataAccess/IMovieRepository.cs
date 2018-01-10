@@ -8,5 +8,6 @@ namespace PlanetaKinoScheduleChecker.DataAccess
         int AddMovie(Movie movie);
         Movie GetMovie(int movieId);
         IEnumerable<Movie> GetMovies();
+        IEnumerable<Movie> GetAvailiableMovies();
     }
 }

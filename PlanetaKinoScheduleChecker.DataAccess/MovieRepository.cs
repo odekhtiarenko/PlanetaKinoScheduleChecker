@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using PlanetaKinoScheduleChecker.Data;
@@ -13,7 +14,7 @@ namespace PlanetaKinoScheduleChecker.DataAccess
             {
                 conn.Open();
 
-                var affectedRows = conn.Execute(SqlText.Insert_Movie, new { MovieId = movie.MovieId, Title = movie.Title, StartDate = movie.StartDate, EndDate = movie.EndDate });
+                var affectedRows = conn.QuerySingle<int>(SqlText.Insert_Movie, new { CinemaMovieId = movie.CinemaMovieId, Title = movie.Title, StartDate = movie.StartDate, EndDate = movie.EndDate });
                 return affectedRows;
             }
         }
@@ -36,6 +37,37 @@ namespace PlanetaKinoScheduleChecker.DataAccess
                 conn.Open();
 
                 var movies = conn.Query<Movie>(SqlText.GetAll_Movie);
+                return movies;
+            }
+        }
+
+        public IEnumerable<Movie> GetAvailiableMovies()
+        {
+            using (var connection = ConnectionFactory.GetConnection())
+            {
+                connection.Open();
+
+                var movieDictionary = new Dictionary<int, Movie>();
+
+                var movies = connection.Query<Movie, UserSubscription, Movie>(
+                        SqlText.GetAvailiableSubscription,
+                        (invoice, invoiceItem) =>
+                        {
+                            Movie movieEntry;
+
+                            if (!movieDictionary.TryGetValue(invoice.MovieId, out movieEntry))
+                            {
+                                movieEntry = invoice;
+                                movieEntry.Subscriptions = new List<UserSubscription>();
+                                movieDictionary.Add(movieEntry.MovieId, movieEntry);
+                            }
+
+                            movieEntry.Subscriptions.Add(invoiceItem);
+                            return movieEntry;
+                        },
+                        splitOn: "UserSubscriptionId")
+                    .Distinct()
+                    .ToList();
                 return movies;
             }
         }

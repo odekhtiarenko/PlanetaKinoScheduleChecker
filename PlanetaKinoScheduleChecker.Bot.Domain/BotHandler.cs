@@ -69,7 +69,7 @@ namespace PlanetaKinoScheduleChecker.Bot.Domain
         private static async Task SendMovieSuggestions(long chatId, IEnumerable<Movie> movies)
         {
             await _bot.SendTextMessageAsync(chatId, "Pick a Movie:",
-                replyMarkup: new InlineKeyboardMarkup(movies.Select(x => InlineKeyboardButton.WithCallbackData(x.Title, x.MovieId.ToString())).ToArray()));
+                replyMarkup: new InlineKeyboardMarkup(movies.Select(x => InlineKeyboardButton.WithCallbackData(x.Title, x.CinemaMovieId.ToString())).ToArray()));
         }
 
         private static string GetMovieList()
@@ -80,15 +80,16 @@ namespace PlanetaKinoScheduleChecker.Bot.Domain
         private static Task SubscribeUserForMovie(long chatId, string trim)
         {
             var id = Int32.Parse(trim);
-            var movieId = _movieChecker.GetCinemaInfo().Movies.FirstOrDefault(x => x.MovieId == id);
+            var movieId = _movieChecker.GetCinemaInfo().Movies.FirstOrDefault(x => x.CinemaMovieId == id);
             if (movieId != null)
             {
-                var movie = _movieRepository.GetMovie(movieId.MovieId);
+                var movie = _movieRepository.GetMovie(movieId.CinemaMovieId);
+                int idM = 0;
                 if (movie == null)
-                    _movieRepository.AddMovie(new Movie() { MovieId = movieId.MovieId, Title = movieId.Title, EndDate = movieId.EndDate, StartDate = movieId.StartDate });
+                    idM = _movieRepository.AddMovie(new Movie() { CinemaMovieId = movieId.CinemaMovieId, Title = movieId.Title, EndDate = movieId.EndDate, StartDate = movieId.StartDate });
 
-                _subscriptionRepository.Add(new UserSubscription() { ChatId = chatId, MovieId = movieId.MovieId });
-                _logger.Info($"Subsctiontion added for Movie {movieId} {trim} and User {chatId}");
+                _subscriptionRepository.Add(new UserSubscription() { ChatId = chatId,   MovieId = movie == null ? idM : movieId.MovieId });
+                _logger.Info($"Subsciption added for Movie {movieId} {trim} and User {chatId}");
             }
 
             return Task.FromResult(0);

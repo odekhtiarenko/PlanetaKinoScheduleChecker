@@ -24,7 +24,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
-                    MovieId = _fixture.Create<int>(),
+                    CinemaMovieId = _fixture.Create<int>(),
                     StartDate = DateTime.Now,
                     Title = $"Movie Title {Guid.NewGuid()}"
                 });
@@ -37,7 +37,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
         public void Should_GetAll_movies()
         {
             var movies = MovieRepository.GetMovies();
-
+            var t = MovieRepository.GetAvailiableMovies();
             Assert.That(movies, !Is.Null);
         }
 
@@ -48,7 +48,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
-                    MovieId = _fixture.Create<int>(),
+                    CinemaMovieId = _fixture.Create<int>(),
                     StartDate = DateTime.Now,
                     Title = $"Movie Title {Guid.NewGuid()}"
                 });
@@ -57,7 +57,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
-                    MovieId = _fixture.Create<int>(),
+                    CinemaMovieId = _fixture.Create<int>(),
                     StartDate = DateTime.Now,
                     Title = $"Movie Title {Guid.NewGuid()}"
                 });
@@ -66,7 +66,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
-                    MovieId = _fixture.Create<int>(),
+                    CinemaMovieId = _fixture.Create<int>(),
                     StartDate = DateTime.Now,
                     Title = $"Movie Title {Guid.NewGuid()}"
                 });
@@ -75,11 +75,11 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
 
             var expected = movies.ElementAt(new Random().Next(1, movies.Count()));
 
-            var result = MovieRepository.GetMovie(expected.MovieId);
+            var result = MovieRepository.GetMovie(expected.CinemaMovieId);
 
-            Assert.That(result.Id, Is.EqualTo(result.Id));
-            Assert.That(result.EndDate, Is.EqualTo(result.EndDate));
             Assert.That(result.MovieId, Is.EqualTo(result.MovieId));
+            Assert.That(result.EndDate, Is.EqualTo(result.EndDate));
+            Assert.That(result.CinemaMovieId, Is.EqualTo(result.CinemaMovieId));
             Assert.That(result.StartDate, Is.EqualTo(result.StartDate));
             Assert.That(result.Title, Is.EqualTo(result.Title));
         }

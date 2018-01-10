@@ -31,23 +31,23 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
             {
                 _logger.Info("Check");
 
-                var movies = _movieRepository.GetMovies();
+                var movies = _movieRepository.GetAvailiableMovies();
                 if (movies != null && movies.Count() != 0)
                 {
                     _logger.Info($"checking subs {movies.Count()}");
                     foreach (var movie in movies)
                     {
-                        _logger.Info($"Start check for movie {movie.MovieId} {movie.Title}");
+                        _logger.Info($"Start check for movie {movie.CinemaMovieId} {movie.Title}");
 
-                        if (CheckIfTicketsAvailiable(movie.MovieId))
+                        if (CheckIfTicketsAvailiable(movie.CinemaMovieId))
                         {
-                            OnRelease(this, new MoveRealesReleaseArgs(movie.MovieId));
+                            OnRelease(this, new MoveRealesReleaseArgs(movie.CinemaMovieId));
                             _logger.Info($"Movie {movie.Title} released");
                         }
                     }
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(1));
+                await Task.Delay(TimeSpan.FromMinutes(0.3));
             }
         }
 
@@ -63,13 +63,13 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
             if (cinemaInfo == null)
                 throw new NullReferenceException();
 
-            return cinemaInfo.Movies.SingleOrDefault(m => m.Title == movieTitle)?.MovieId;
+            return cinemaInfo.Movies.SingleOrDefault(m => m.Title == movieTitle)?.CinemaMovieId;
         }
 
         public bool CheckIfTicketsAvailiable(string movieTitle)
         {
             var cinemaInfo = GetCinemaInfo();
-            var movieId = cinemaInfo.Movies.SingleOrDefault(movie => movie.Title == movieTitle)?.MovieId;
+            var movieId = cinemaInfo.Movies.SingleOrDefault(movie => movie.Title == movieTitle)?.CinemaMovieId;
             Console.WriteLine($"Movie title {movieTitle} with Id {movieId}");
             return cinemaInfo.ShowTimes.Any(show => show.MovieId == movieId);
         }
