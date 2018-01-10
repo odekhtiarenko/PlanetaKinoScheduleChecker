@@ -37,17 +37,17 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
                     _logger.Info($"checking subs {movies.Count()}");
                     foreach (var movie in movies)
                     {
-                        _logger.Info($"Start check for movie {movie.Id} {movie.Title}");
+                        _logger.Info($"Start check for movie {movie.MovieId} {movie.Title}");
 
-                        if (CheckIfTicketsAvailiable(movie.Id))
+                        if (CheckIfTicketsAvailiable(movie.MovieId))
                         {
-                            OnRelease(this, new MoveRealesReleaseArgs(movie.Id));
+                            OnRelease(this, new MoveRealesReleaseArgs(movie.MovieId));
                             _logger.Info($"Movie {movie.Title} released");
                         }
                     }
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(10));
+                await Task.Delay(TimeSpan.FromMinutes(1));
             }
         }
 
@@ -63,13 +63,13 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
             if (cinemaInfo == null)
                 throw new NullReferenceException();
 
-            return cinemaInfo.Movies.SingleOrDefault(m => m.Title == movieTitle)?.Id;
+            return cinemaInfo.Movies.SingleOrDefault(m => m.Title == movieTitle)?.MovieId;
         }
 
         public bool CheckIfTicketsAvailiable(string movieTitle)
         {
             var cinemaInfo = GetCinemaInfo();
-            var movieId = cinemaInfo.Movies.SingleOrDefault(movie => movie.Title == movieTitle)?.Id;
+            var movieId = cinemaInfo.Movies.SingleOrDefault(movie => movie.Title == movieTitle)?.MovieId;
             Console.WriteLine($"Movie title {movieTitle} with Id {movieId}");
             return cinemaInfo.ShowTimes.Any(show => show.MovieId == movieId);
         }

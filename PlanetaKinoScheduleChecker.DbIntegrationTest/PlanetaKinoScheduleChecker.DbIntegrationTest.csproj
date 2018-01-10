@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}</ProjectGuid>
+    <ProjectGuid>{F7845688-0A21-4C49-85BD-509E75EA600C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>PlanetaKinoScheduleChecker.DataAccess</RootNamespace>
-    <AssemblyName>PlanetaKinoScheduleChecker.DataAccess</AssemblyName>
+    <RootNamespace>PlanetaKinoScheduleChecker.DbIntegrationTest</RootNamespace>
+    <AssemblyName>PlanetaKinoScheduleChecker.DbIntegrationTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,11 +35,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.4\lib\net451\Dapper.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.51.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.51.0\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.NUnit3, Version=3.51.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.NUnit3.3.51.0\lib\net40\Ploeh.AutoFixture.NUnit3.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,22 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConnectionFactory.cs" />
-    <Compile Include="IMovieRepository.cs" />
-    <Compile Include="IUserSubscriptionRepository.cs" />
-    <Compile Include="MovieRepository.cs" />
+    <Compile Include="UserSubScriptionRepositoryTest.cs" />
+    <Compile Include="MovieRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlText.cs" />
-    <Compile Include="UserSubscriptionRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PlanetaKinoScheduleChecker.DataAccess\PlanetaKinoScheduleChecker.DataAccess.csproj">
+      <Project>{0f530b06-f86d-45c7-8f43-bb1a0eb56b53}</Project>
+      <Name>PlanetaKinoScheduleChecker.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlanetaKinoScheduleChecker.Models\PlanetaKinoScheduleChecker.Data.csproj">
-      <Project>{226C8D1D-E005-4F14-BE26-BC772EF697A2}</Project>
+      <Project>{226c8d1d-e005-4f14-be26-bc772ef697a2}</Project>
       <Name>PlanetaKinoScheduleChecker.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

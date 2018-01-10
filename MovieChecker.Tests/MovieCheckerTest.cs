@@ -50,7 +50,7 @@ namespace PlanetaKinoScheduleChecker.Tests
             _movieCheckerClientMock.Setup(client => client.GetCinemaInfo()).Returns(cinemaInfo);
             var res = _movieChecker.CheckIfTicketsAvailiable(moviename);
             Assert.AreEqual(res, false);
-            ((IList<ShowTime>)cinemaInfo.ShowTimes).Add(new ShowTime(){FullDate = DateTime.Now.AddDays(2), MovieId = cinemaInfo.Movies.First(x=>x.Title==moviename).Id });
+            ((IList<ShowTime>)cinemaInfo.ShowTimes).Add(new ShowTime(){FullDate = DateTime.Now.AddDays(2), MovieId = cinemaInfo.Movies.First(x=>x.Title==moviename).MovieId });
             _movieCheckerClientMock.Setup(client => client.GetCinemaInfo()).Returns(cinemaInfo);
 
             res = _movieChecker.CheckIfTicketsAvailiable(moviename);

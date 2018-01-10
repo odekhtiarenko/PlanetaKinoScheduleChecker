@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.Data", "PlanetaKinoScheduleChecker.Models\PlanetaKinoScheduleChecker.Data.csproj", "{226C8D1D-E005-4F14-BE26-BC772EF697A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetaKinoScheduleChecker.DbIntegrationTest", "PlanetaKinoScheduleChecker.DbIntegrationTest\PlanetaKinoScheduleChecker.DbIntegrationTest.csproj", "{F7845688-0A21-4C49-85BD-509E75EA600C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{226C8D1D-E005-4F14-BE26-BC772EF697A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{226C8D1D-E005-4F14-BE26-BC772EF697A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{226C8D1D-E005-4F14-BE26-BC772EF697A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7845688-0A21-4C49-85BD-509E75EA600C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7845688-0A21-4C49-85BD-509E75EA600C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7845688-0A21-4C49-85BD-509E75EA600C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7845688-0A21-4C49-85BD-509E75EA600C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

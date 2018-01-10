@@ -1,48 +1,51 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Dapper;
 using PlanetaKinoScheduleChecker.Data;
 
 namespace PlanetaKinoScheduleChecker.DataAccess
 {
     public class UserSubscriptionRepository : IUserSubscriptionRepository
     {
-        private static readonly IList<UserSubscription> UserSubscriptions = new List<UserSubscription>();
-
-        public void Add(UserSubscription userSubscription)
+        public int Add(UserSubscription userSubscription)
         {
-            userSubscription.Id = UserSubscriptions.Count + 1;
-            UserSubscriptions.Add(userSubscription);
+            using (var conn = ConnectionFactory.GetConnection())
+            {
+                var affectedRows = conn.Execute(SqlText.Insert_Subscription,
+                    new
+                    {
+                        userSubscription.ChatId,
+                        userSubscription.MovieId,
+                        userSubscription.City,
+                        userSubscription.IsNotified
+                    });
+                return affectedRows;
+            }
         }
 
         public void Update(UserSubscription userSubscription)
         {
-            var entity = UserSubscriptions.SingleOrDefault(x => x.Id == userSubscription.Id);
-
-            if (entity != null)
+            using (var conn = ConnectionFactory.GetConnection())
             {
-                var i = UserSubscriptions.IndexOf(entity);
-                UserSubscriptions[i] = userSubscription;
+                var affectedRows = conn.Execute(SqlText.UpdateSubscription,
+                    new
+                    {
+                        userSubscription.Id,
+                        userSubscription.ChatId,
+                        userSubscription.MovieId,
+                        userSubscription.City,
+                        userSubscription.IsNotified
+                    });
             }
         }
 
-        public UserSubscription Get(int id)
+        public IEnumerable<UserSubscription> GetAllByMovieId(int movieId, bool isNotified = false)
         {
-            return UserSubscriptions.SingleOrDefault(x => x.Id == id);
-        }
-
-        public IEnumerable<UserSubscription> GetAll()
-        {
-            return UserSubscriptions;
-        }
-
-        public IEnumerable<UserSubscription> GetAllByChatId(long chatId)
-        {
-            return UserSubscriptions.Where(x => x.ChatId == chatId).ToList();
-        }
-
-        public IEnumerable<UserSubscription> GetAllByMovieId(int movieId)
-        {
-            return UserSubscriptions.Where(x => x.MovieId == movieId && !x.IsNotified).ToList();
+            using (var conn = ConnectionFactory.GetConnection())
+            {
+                var userSubscriptions = conn.Query<UserSubscription>(SqlText.GetSubscriptionByMovieId, new { MovieId = movieId, IsNotified = isNotified });
+                return userSubscriptions;
+            }
         }
     }
 }

@@ -1,38 +1,43 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Dapper;
 using PlanetaKinoScheduleChecker.Data;
 
 namespace PlanetaKinoScheduleChecker.DataAccess
 {
     public class MovieRepository : IMovieRepository
     {
-        private static readonly IList<Movie> Movies = new List<Movie>();
-
-        public void AddMovie(Movie movie)
+        public int AddMovie(Movie movie)
         {
-            if (Movies.All(x => x.Id != movie.Id))
-                Movies.Add(movie);
-        }
-
-        public void Update(Movie movie)
-        {
-            var entity = Movies.SingleOrDefault(x => x.Id == movie.Id);
-
-            if (entity != null)
+            using (var conn = ConnectionFactory.GetConnection())
             {
-                var i = Movies.IndexOf(entity);
-                Movies[i] = movie;
+                conn.Open();
+
+                var affectedRows = conn.Execute(SqlText.Insert_Movie, new { MovieId = movie.MovieId, Title = movie.Title, StartDate = movie.StartDate, EndDate = movie.EndDate });
+                return affectedRows;
             }
         }
 
         public Movie GetMovie(int movieId)
         {
-            return Movies.SingleOrDefault(x => x.Id == movieId);
+            using (var conn = ConnectionFactory.GetConnection())
+            {
+                conn.Open();
+
+                var movie = conn.QueryFirstOrDefault<Movie>(SqlText.Get_Movie, new { MovieId = movieId });
+                return movie;
+            }
         }
 
         public IEnumerable<Movie> GetMovies()
         {
-            return Movies;
+            using (var conn = ConnectionFactory.GetConnection())
+            {
+                conn.Open();
+
+                var movies = conn.Query<Movie>(SqlText.GetAll_Movie);
+                return movies;
+            }
         }
     }
 }

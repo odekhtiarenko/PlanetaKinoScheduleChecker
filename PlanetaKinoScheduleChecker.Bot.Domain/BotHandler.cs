@@ -73,7 +73,7 @@ namespace PlanetaKinoScheduleChecker.Bot.Domain
             {
                 var movie = _movieRepository.GetMovie(movieId.Value);
                 if (movie == null)
-                    _movieRepository.AddMovie(new Movie(movieId.Value, trim));
+                    _movieRepository.AddMovie(new Movie() { MovieId = movieId.Value, Title = trim, EndDate = DateTime.Now, StartDate = DateTime.Now });
 
                 _subscriptionRepository.Add(new UserSubscription() { ChatId = chatId, MovieId = movieId.Value });
                 _logger.Info($"Subsctiontion added for Movie { movieId.Value} {trim} and User {chatId}");

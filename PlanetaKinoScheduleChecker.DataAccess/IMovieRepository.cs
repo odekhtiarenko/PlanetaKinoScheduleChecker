@@ -5,8 +5,7 @@ namespace PlanetaKinoScheduleChecker.DataAccess
 {
     public interface IMovieRepository
     {
-        void AddMovie(Movie movie);
-        void Update(Movie movie);
+        int AddMovie(Movie movie);
         Movie GetMovie(int movieId);
         IEnumerable<Movie> GetMovies();
     }

@@ -5,11 +5,8 @@ namespace PlanetaKinoScheduleChecker.DataAccess
 {
     public interface IUserSubscriptionRepository
     {
-        void Add(UserSubscription userSubscription);
+        int Add(UserSubscription userSubscription);
         void Update(UserSubscription userSubscription);
-        UserSubscription Get(int id);
-        IEnumerable<UserSubscription> GetAll();
-        IEnumerable<UserSubscription> GetAllByChatId(long chatId);
-        IEnumerable<UserSubscription> GetAllByMovieId(int movieId);
+        IEnumerable<UserSubscription> GetAllByMovieId(int movieId, bool isNotified = false);
     }
 }
