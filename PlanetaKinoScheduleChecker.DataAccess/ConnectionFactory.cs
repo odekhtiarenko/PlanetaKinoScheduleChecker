@@ -7,9 +7,8 @@ namespace PlanetaKinoScheduleChecker.DataAccess
 {
     public class ConnectionFactory
     {
-        private static string Connection = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
+        private static readonly string Connection = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
 
         public static Func<DbConnection> GetConnection = () => new SqlConnection(Connection);
-
     }
 }

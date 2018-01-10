@@ -14,18 +14,29 @@ namespace PlanetaKinoScheduleChecker.DataAccess
             {
                 conn.Open();
 
-                var affectedRows = conn.QuerySingle<int>(SqlText.Insert_Movie, new { CinemaMovieId = movie.CinemaMovieId, Title = movie.Title, StartDate = movie.StartDate, EndDate = movie.EndDate });
+                var affectedRows = conn.QuerySingle<int>(SqlText.InsertMovie, new { CinemaMovieId = movie.CinemaMovieId, Title = movie.Title, StartDate = movie.StartDate, EndDate = movie.EndDate });
                 return affectedRows;
             }
         }
 
-        public Movie GetMovie(int movieId)
+        public Movie GetMovieByExternalId(int movieId)
         {
             using (var conn = ConnectionFactory.GetConnection())
             {
                 conn.Open();
 
-                var movie = conn.QueryFirstOrDefault<Movie>(SqlText.Get_Movie, new { MovieId = movieId });
+                var movie = conn.QueryFirstOrDefault<Movie>(SqlText.GetMovieByCinemaMovieId, new { CinemaMovieId = movieId });
+                return movie;
+            }
+        }
+
+        public Movie GetMovieById(int movieId)
+        {
+            using (var conn = ConnectionFactory.GetConnection())
+            {
+                conn.Open();
+
+                var movie = conn.QueryFirstOrDefault<Movie>(SqlText.GetMovieByMovieId, new { MovieId = movieId });
                 return movie;
             }
         }
@@ -36,7 +47,7 @@ namespace PlanetaKinoScheduleChecker.DataAccess
             {
                 conn.Open();
 
-                var movies = conn.Query<Movie>(SqlText.GetAll_Movie);
+                var movies = conn.Query<Movie>(SqlText.GetAllMovie);
                 return movies;
             }
         }

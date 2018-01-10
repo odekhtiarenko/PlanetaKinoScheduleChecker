@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using log4net;
+using PlanetaKinoScheduleChecker.Data;
 using PlanetaKinoScheduleChecker.DataAccess;
 using PlanetaKinoScheduleChecker.Domain.Abstract;
 using PlanetaKinoScheduleChecker.Domain.Models;
@@ -32,16 +33,17 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
                 _logger.Info("Check");
 
                 var movies = _movieRepository.GetAvailiableMovies();
-                if (movies != null && movies.Count() != 0)
+                var enumerable = movies as Movie[] ?? movies.ToArray();
+                if (enumerable.Length != 0)
                 {
-                    _logger.Info($"checking subs {movies.Count()}");
-                    foreach (var movie in movies)
+                    _logger.Info($"checking subs {enumerable.Count()}");
+                    foreach (var movie in enumerable)
                     {
                         _logger.Info($"Start check for movie {movie.CinemaMovieId} {movie.Title}");
 
                         if (CheckIfTicketsAvailiable(movie.CinemaMovieId))
                         {
-                            OnRelease(this, new MoveRealesReleaseArgs(movie.CinemaMovieId));
+                            OnRelease?.Invoke(this, new MoveRealesReleaseArgs(movie.MovieId));
                             _logger.Info($"Movie {movie.Title} released");
                         }
                     }

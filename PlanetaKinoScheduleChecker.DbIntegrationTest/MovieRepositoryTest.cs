@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using PlanetaKinoScheduleChecker.Data;
 using PlanetaKinoScheduleChecker.DataAccess;
@@ -13,14 +10,14 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
     [TestFixture]
     public class MovieRepositoryTest
     {
-        private readonly IMovieRepository MovieRepository = new MovieRepository();
-        private Fixture _fixture = new Fixture();
+        private readonly IMovieRepository _movieRepository = new MovieRepository();
+        private readonly Fixture _fixture = new Fixture();
 
         [Test]
         public void Should_insert_movie()
         {
 
-            var affectedRows = MovieRepository.AddMovie(
+            var affectedRows = _movieRepository.AddMovie(
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
@@ -36,15 +33,14 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
         [Test]
         public void Should_GetAll_movies()
         {
-            var movies = MovieRepository.GetMovies();
-            var t = MovieRepository.GetAvailiableMovies();
+            var movies = _movieRepository.GetMovies();
             Assert.That(movies, !Is.Null);
         }
 
         [Test]
         public void Should_Get_movie()
         {
-            MovieRepository.AddMovie(
+            _movieRepository.AddMovie(
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
@@ -53,7 +49,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                     Title = $"Movie Title {Guid.NewGuid()}"
                 });
 
-            MovieRepository.AddMovie(
+            _movieRepository.AddMovie(
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
@@ -62,7 +58,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                     Title = $"Movie Title {Guid.NewGuid()}"
                 });
 
-            MovieRepository.AddMovie(
+            _movieRepository.AddMovie(
                 new Movie()
                 {
                     EndDate = DateTime.Now.AddDays(7),
@@ -71,11 +67,11 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                     Title = $"Movie Title {Guid.NewGuid()}"
                 });
 
-            var movies = MovieRepository.GetMovies();
+            var movies = _movieRepository.GetMovies();
 
             var expected = movies.ElementAt(new Random().Next(1, movies.Count()));
 
-            var result = MovieRepository.GetMovie(expected.CinemaMovieId);
+            var result = _movieRepository.GetMovieByExternalId(expected.CinemaMovieId);
 
             Assert.That(result.MovieId, Is.EqualTo(result.MovieId));
             Assert.That(result.EndDate, Is.EqualTo(result.EndDate));

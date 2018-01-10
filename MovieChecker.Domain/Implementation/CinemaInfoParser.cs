@@ -53,11 +53,13 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
                 var title = element.Elements().SingleOrDefault(e => e.Name == "title").Value;
                 var start = DateTime.Parse(element.Elements().SingleOrDefault(e => e.Name == "dt-start").Value);
                 var end = DateTime.Parse(element.Elements().SingleOrDefault(e => e.Name == "dt-end").Value);
-                var movie = new Movie();
-                movie.CinemaMovieId = id;
-                movie.Title = title;
-                movie.EndDate = end;
-                movie.StartDate = start;
+                var movie = new Movie
+                {
+                    CinemaMovieId = id,
+                    Title = title,
+                    EndDate = end,
+                    StartDate = start
+                };
                 yield return movie;
             }
         }

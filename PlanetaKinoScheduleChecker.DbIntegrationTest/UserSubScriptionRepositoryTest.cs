@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using PlanetaKinoScheduleChecker.Data;
@@ -11,14 +10,14 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
     [TestFixture]
     public class UserSubScriptionRepositoryTest
     {
-        private readonly IUserSubscriptionRepository userSubscriptionRepository = new UserSubscriptionRepository();
-        private Fixture _fixture = new Fixture();
+        private readonly IUserSubscriptionRepository _userSubscriptionRepository = new UserSubscriptionRepository();
+        private readonly Fixture _fixture = new Fixture();
 
         [Test]
         public void Should_insert_Subscription()
         {
 
-            var affectedRows = userSubscriptionRepository.Add(
+            var affectedRows = _userSubscriptionRepository.Add(
                 new UserSubscription()
                 {
                     ChatId = _fixture.Create<long>(),
@@ -35,66 +34,68 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
         {
             var movieId = _fixture.Create<int>();
 
-            var usersubsLst = new List<UserSubscription>();
+            var usersubsLst = new List<UserSubscription>
+            {
+                new UserSubscription()
+                {
+                    ChatId = _fixture.Create<long>(),
+                    IsNotified = false,
+                    MovieId = movieId
+                },
+                new UserSubscription()
+                {
+                    ChatId = _fixture.Create<long>(),
+                    IsNotified = false,
+                    MovieId = movieId
+                },
+                new UserSubscription()
+                {
+                    ChatId = _fixture.Create<long>(),
+                    IsNotified = false,
+                    MovieId = movieId
+                },
+                new UserSubscription()
+                {
+                    ChatId = _fixture.Create<long>(),
+                    IsNotified = false,
+                    MovieId = movieId
+                },
+                new UserSubscription()
+                {
+                    ChatId = _fixture.Create<long>(),
+                    IsNotified = false,
+                    MovieId = movieId
+                },
+                new UserSubscription()
+                {
+                    ChatId = _fixture.Create<long>(),
+                    IsNotified = false,
+                    MovieId = movieId
+                },
+                new UserSubscription()
+                {
+                    ChatId = _fixture.Create<long>(),
+                    IsNotified = false,
+                    MovieId = movieId
+                }
+            };
 
-            usersubsLst.Add(new UserSubscription()
-            {
-                ChatId = _fixture.Create<long>(),
-                IsNotified = false,
-                MovieId = movieId
-            });
-            usersubsLst.Add(new UserSubscription()
-            {
-                ChatId = _fixture.Create<long>(),
-                IsNotified = false,
-                MovieId = movieId
-            });
-            usersubsLst.Add(new UserSubscription()
-            {
-                ChatId = _fixture.Create<long>(),
-                IsNotified = false,
-                MovieId = movieId
-            });
 
-            usersubsLst.Add(new UserSubscription()
-            {
-                ChatId = _fixture.Create<long>(),
-                IsNotified = false,
-                MovieId = movieId
-            });
-            usersubsLst.Add(new UserSubscription()
-            {
-                ChatId = _fixture.Create<long>(),
-                IsNotified = false,
-                MovieId = movieId
-            });
-            usersubsLst.Add(new UserSubscription()
-            {
-                ChatId = _fixture.Create<long>(),
-                IsNotified = false,
-                MovieId = movieId
-            });
-            usersubsLst.Add(new UserSubscription()
-            {
-                ChatId = _fixture.Create<long>(),
-                IsNotified = false,
-                MovieId = movieId
-            });
 
 
             foreach (var userSubscription in usersubsLst)
             {
-                userSubscriptionRepository.Add(userSubscription);
+                _userSubscriptionRepository.Add(userSubscription);
             }
 
-            foreach (var userSubscription in userSubscriptionRepository.GetAllByMovieId(movieId))
+            foreach (var userSubscription in _userSubscriptionRepository.GetAllByMovieId(movieId))
             {
                 userSubscription.IsNotified = true;
                 userSubscription.City = "KIEV";
-                userSubscriptionRepository.Update(userSubscription);
+                _userSubscriptionRepository.Update(userSubscription);
             }
 
-            var subscriptions = userSubscriptionRepository.GetAllByMovieId(movieId);
+            var subscriptions = _userSubscriptionRepository.GetAllByMovieId(movieId);
 
             Assert.That(subscriptions.Count(), Is.EqualTo(0));
 
@@ -105,7 +106,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
         {
             var movieId = _fixture.Create<int>();
 
-            userSubscriptionRepository.Add(
+            _userSubscriptionRepository.Add(
                 new UserSubscription()
                 {
                     ChatId = _fixture.Create<long>(),
@@ -113,7 +114,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                     MovieId = movieId
                 });
 
-            userSubscriptionRepository.Add(
+            _userSubscriptionRepository.Add(
                 new UserSubscription()
                 {
                     ChatId = _fixture.Create<long>(),
@@ -121,7 +122,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                     MovieId = movieId
                 });
 
-            userSubscriptionRepository.Add(
+            _userSubscriptionRepository.Add(
                 new UserSubscription()
                 {
                     ChatId = _fixture.Create<long>(),
@@ -129,7 +130,7 @@ namespace PlanetaKinoScheduleChecker.DbIntegrationTest
                     MovieId = movieId
                 });
 
-            var userSub = userSubscriptionRepository.GetAllByMovieId(movieId);
+            var userSub = _userSubscriptionRepository.GetAllByMovieId(movieId);
 
             Assert.That(userSub.Count(), Is.EqualTo(3));
         }

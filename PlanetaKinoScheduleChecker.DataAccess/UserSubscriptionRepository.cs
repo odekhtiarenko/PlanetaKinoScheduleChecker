@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Dapper;
 using PlanetaKinoScheduleChecker.Data;
 
@@ -11,7 +10,7 @@ namespace PlanetaKinoScheduleChecker.DataAccess
         {
             using (var conn = ConnectionFactory.GetConnection())
             {
-                var affectedRows = conn.Execute(SqlText.Insert_Subscription,
+                var affectedRows = conn.Execute(SqlText.InsertSubscription,
                     new
                     {
                         userSubscription.ChatId,
@@ -27,7 +26,7 @@ namespace PlanetaKinoScheduleChecker.DataAccess
         {
             using (var conn = ConnectionFactory.GetConnection())
             {
-                var affectedRows = conn.Execute(SqlText.UpdateSubscription,
+                conn.Execute(SqlText.UpdateSubscription,
                     new
                     {
                         userSubscription.UserSubscriptionId,

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
 using System.Threading.Tasks;
 using PlanetaKinoScheduleChecker.Bot.Domain;
-using PlanetaKinoScheduleChecker.Bot.Domain.Models;
 using PlanetaKinoScheduleChecker.Domain.Abstract;
 using PlanetaKinoScheduleChecker.Domain.Implementation;
 using RestSharp;
@@ -18,7 +11,7 @@ namespace PlanetaKinoScheduleChecker
     {
         private static readonly IMovieChecker _movieChecker = new MovieChecker(new MovieCheckerClient(new RestClient(@"https://planetakino.ua"), new CinemaInfoParser()));
 
-        private static void Main(string[] args)
+        private static void Main()
         {
             BotHandler.InitalizeBot();
 
