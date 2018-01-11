@@ -1,4 +1,4 @@
-namespace PlanetaKinoScheduleChecker.Domain.Implementation
+namespace PlanetaKinoScheduleChecker.Service.Implementation
 {
     public class MoveRealesReleaseArgs
     {

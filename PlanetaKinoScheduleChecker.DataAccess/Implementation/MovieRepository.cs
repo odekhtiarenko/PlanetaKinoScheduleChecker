@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Dapper;
 using PlanetaKinoScheduleChecker.Data;
+using PlanetaKinoScheduleChecker.DataAccess.Abstract;
 
-namespace PlanetaKinoScheduleChecker.DataAccess
+namespace PlanetaKinoScheduleChecker.DataAccess.Implementation
 {
     public class MovieRepository : IMovieRepository
     {

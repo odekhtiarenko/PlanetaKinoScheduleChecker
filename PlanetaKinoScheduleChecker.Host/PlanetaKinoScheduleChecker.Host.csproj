@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PlanetaKinoScheduleChecker.Bot.Domain</RootNamespace>
-    <AssemblyName>PlanetaKinoScheduleChecker.Bot.Domain</AssemblyName>
+    <ProjectGuid>{BDB7F0E8-1FCC-467E-8CA8-4DDD8AB366A9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PlanetaKinoScheduleChecker</RootNamespace>
+    <AssemblyName>PlanetaKinoScheduleChecker</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
@@ -45,7 +44,6 @@
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
@@ -109,25 +107,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BotHandler.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MovieChecker.Domain\PlanetaKinoScheduleChecker.Domain.csproj">
-      <Project>{5E31E53C-E96A-40D8-8300-099FA8F3E33E}</Project>
-      <Name>PlanetaKinoScheduleChecker.Domain</Name>
+    <ProjectReference Include="..\PlanetaKinoScheduleChecker.Bot\PlanetaKinoScheduleChecker.Bot.csproj">
+      <Project>{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}</Project>
+      <Name>PlanetaKinoScheduleChecker.Bot</Name>
     </ProjectReference>
     <ProjectReference Include="..\PlanetaKinoScheduleChecker.DataAccess\PlanetaKinoScheduleChecker.DataAccess.csproj">
       <Project>{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}</Project>
       <Name>PlanetaKinoScheduleChecker.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PlanetaKinoScheduleChecker.Models\PlanetaKinoScheduleChecker.Data.csproj">
-      <Project>{226C8D1D-E005-4F14-BE26-BC772EF697A2}</Project>
-      <Name>PlanetaKinoScheduleChecker.Data</Name>
+    <ProjectReference Include="..\PlanetaKinoScheduleChecker.Service\PlanetaKinoScheduleChecker.Service.csproj">
+      <Project>{5E31E53C-E96A-40D8-8300-099FA8F3E33E}</Project>
+      <Name>PlanetaKinoScheduleChecker.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

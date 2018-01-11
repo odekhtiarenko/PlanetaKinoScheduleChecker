@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlanetaKinoScheduleChecker.Domain.Models
+namespace PlanetaKinoScheduleChecker.Service.Models
 {
     public class ShowTime
     {

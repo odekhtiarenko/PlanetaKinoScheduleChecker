@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using PlanetaKinoScheduleChecker.Data;
 
-namespace PlanetaKinoScheduleChecker.DataAccess
+namespace PlanetaKinoScheduleChecker.DataAccess.Abstract
 {
     public interface IMovieRepository
     {

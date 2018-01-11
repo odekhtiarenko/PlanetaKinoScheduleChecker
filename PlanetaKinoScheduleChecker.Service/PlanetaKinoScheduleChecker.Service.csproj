@@ -7,8 +7,8 @@
     <ProjectGuid>{5E31E53C-E96A-40D8-8300-099FA8F3E33E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PlanetaKinoScheduleChecker.Domain</RootNamespace>
-    <AssemblyName>PlanetaKinoScheduleChecker.Domain</AssemblyName>
+    <RootNamespace>PlanetaKinoScheduleChecker.Service</RootNamespace>
+    <AssemblyName>PlanetaKinoScheduleChecker.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

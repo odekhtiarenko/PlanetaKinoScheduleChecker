@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Dapper;
 using PlanetaKinoScheduleChecker.Data;
+using PlanetaKinoScheduleChecker.DataAccess.Abstract;
 
-namespace PlanetaKinoScheduleChecker.DataAccess
+namespace PlanetaKinoScheduleChecker.DataAccess.Implementation
 {
     public class UserSubscriptionRepository : IUserSubscriptionRepository
     {
@@ -55,9 +55,5 @@ namespace PlanetaKinoScheduleChecker.DataAccess
                 return userSubscriptions;
             }
         }
-    }
-
-    public class DuplicateUserSubscriptionError : Exception
-    {
     }
 }

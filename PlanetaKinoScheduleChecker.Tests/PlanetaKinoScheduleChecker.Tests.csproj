@@ -58,13 +58,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MovieChecker.Domain\PlanetaKinoScheduleChecker.Domain.csproj">
-      <Project>{5e31e53c-e96a-40d8-8300-099fa8f3e33e}</Project>
-      <Name>PlanetaKinoScheduleChecker.Domain</Name>
+    <ProjectReference Include="..\PlanetaKinoScheduleChecker.DataAccess\PlanetaKinoScheduleChecker.DataAccess.csproj">
+      <Project>{0F530B06-F86D-45C7-8F43-BB1A0EB56B53}</Project>
+      <Name>PlanetaKinoScheduleChecker.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\PlanetaKinoScheduleChecker.Models\PlanetaKinoScheduleChecker.Data.csproj">
       <Project>{226c8d1d-e005-4f14-be26-bc772ef697a2}</Project>
       <Name>PlanetaKinoScheduleChecker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlanetaKinoScheduleChecker.Service\PlanetaKinoScheduleChecker.Service.csproj">
+      <Project>{5E31E53C-E96A-40D8-8300-099FA8F3E33E}</Project>
+      <Name>PlanetaKinoScheduleChecker.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

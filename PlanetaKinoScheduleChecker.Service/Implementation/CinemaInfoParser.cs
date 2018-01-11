@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using PlanetaKinoScheduleChecker.Data;
-using PlanetaKinoScheduleChecker.Domain.Abstract;
-using PlanetaKinoScheduleChecker.Domain.Models;
+using PlanetaKinoScheduleChecker.Service.Abstract;
+using PlanetaKinoScheduleChecker.Service.Models;
 
-namespace PlanetaKinoScheduleChecker.Domain.Implementation
+namespace PlanetaKinoScheduleChecker.Service.Implementation
 {
     public class CinemaInfoParser : ICinemaInfoParser
     {

@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
-using PlanetaKinoScheduleChecker.Domain.Abstract;
-using PlanetaKinoScheduleChecker.Domain.Implementation;
-using PlanetaKinoScheduleChecker.Domain.Models;
+using PlanetaKinoScheduleChecker.Service.Abstract;
+using PlanetaKinoScheduleChecker.Service.Implementation;
+using PlanetaKinoScheduleChecker.Service.Models;
 
 namespace PlanetaKinoScheduleChecker.Tests
 {

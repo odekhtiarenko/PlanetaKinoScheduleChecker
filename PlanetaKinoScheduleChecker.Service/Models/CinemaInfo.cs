@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using PlanetaKinoScheduleChecker.Data;
 
-namespace PlanetaKinoScheduleChecker.Domain.Models
+namespace PlanetaKinoScheduleChecker.Service.Models
 {
     public class CinemaInfo
     {

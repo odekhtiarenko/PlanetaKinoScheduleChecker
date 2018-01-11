@@ -1,7 +1,7 @@
-﻿using PlanetaKinoScheduleChecker.Domain.Implementation;
-using PlanetaKinoScheduleChecker.Domain.Models;
+﻿using PlanetaKinoScheduleChecker.Service.Implementation;
+using PlanetaKinoScheduleChecker.Service.Models;
 
-namespace PlanetaKinoScheduleChecker.Domain.Abstract
+namespace PlanetaKinoScheduleChecker.Service.Abstract
 {
     public interface IMovieChecker
     {

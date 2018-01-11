@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using PlanetaKinoScheduleChecker.Data;
 
-namespace PlanetaKinoScheduleChecker.DataAccess
+namespace PlanetaKinoScheduleChecker.DataAccess.Abstract
 {
+    [InheritedExport]
     public interface IUserSubscriptionRepository
     {
         int Add(UserSubscription userSubscription);

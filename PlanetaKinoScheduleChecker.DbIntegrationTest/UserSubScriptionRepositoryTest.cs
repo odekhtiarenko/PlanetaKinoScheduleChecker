@@ -3,6 +3,8 @@ using System.Linq;
 using NUnit.Framework;
 using PlanetaKinoScheduleChecker.Data;
 using PlanetaKinoScheduleChecker.DataAccess;
+using PlanetaKinoScheduleChecker.DataAccess.Abstract;
+using PlanetaKinoScheduleChecker.DataAccess.Implementation;
 using Ploeh.AutoFixture;
 
 namespace PlanetaKinoScheduleChecker.DbIntegrationTest

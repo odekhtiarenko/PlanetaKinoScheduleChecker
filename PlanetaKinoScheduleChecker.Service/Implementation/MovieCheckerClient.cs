@@ -1,8 +1,8 @@
-﻿using PlanetaKinoScheduleChecker.Domain.Abstract;
-using PlanetaKinoScheduleChecker.Domain.Models;
+﻿using PlanetaKinoScheduleChecker.Service.Abstract;
+using PlanetaKinoScheduleChecker.Service.Models;
 using RestSharp;
 
-namespace PlanetaKinoScheduleChecker.Domain.Implementation
+namespace PlanetaKinoScheduleChecker.Service.Implementation
 {
     public class MovieCheckerClient : IMovieCheckerClient
     {

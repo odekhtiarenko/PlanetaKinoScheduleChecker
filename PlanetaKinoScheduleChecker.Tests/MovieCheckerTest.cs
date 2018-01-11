@@ -4,9 +4,10 @@ using System.IO;
 using System.Linq;
 using Moq;
 using NUnit.Framework;
-using PlanetaKinoScheduleChecker.Domain.Abstract;
-using PlanetaKinoScheduleChecker.Domain.Implementation;
-using PlanetaKinoScheduleChecker.Domain.Models;
+using PlanetaKinoScheduleChecker.DataAccess.Abstract;
+using PlanetaKinoScheduleChecker.Service.Abstract;
+using PlanetaKinoScheduleChecker.Service.Implementation;
+using PlanetaKinoScheduleChecker.Service.Models;
 
 namespace PlanetaKinoScheduleChecker.Tests
 {
@@ -15,13 +16,14 @@ namespace PlanetaKinoScheduleChecker.Tests
     {
         private IMovieChecker _movieChecker;
         private Mock<IMovieCheckerClient> _movieCheckerClientMock;
-
+        private Mock<IMovieRepository> _movieRepositoryMock;
+                                                       
         [SetUp]
         public void SetUp()
         {
             _movieCheckerClientMock = new Mock<IMovieCheckerClient>();
-
-            _movieChecker = new MovieChecker(_movieCheckerClientMock.Object);
+            _movieRepositoryMock = new Mock<IMovieRepository>();
+_movieChecker = new MovieChecker(_movieCheckerClientMock.Object, _movieRepositoryMock.Object);
         }
 
         [TearDown]

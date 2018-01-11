@@ -3,11 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using log4net;
 using PlanetaKinoScheduleChecker.Data;
-using PlanetaKinoScheduleChecker.DataAccess;
-using PlanetaKinoScheduleChecker.Domain.Abstract;
-using PlanetaKinoScheduleChecker.Domain.Models;
+using PlanetaKinoScheduleChecker.DataAccess.Abstract;
+using PlanetaKinoScheduleChecker.DataAccess.Implementation;
+using PlanetaKinoScheduleChecker.Service.Abstract;
+using PlanetaKinoScheduleChecker.Service.Models;
 
-namespace PlanetaKinoScheduleChecker.Domain.Implementation
+namespace PlanetaKinoScheduleChecker.Service.Implementation
 {
     public class MovieChecker : IMovieChecker
     {
@@ -19,9 +20,9 @@ namespace PlanetaKinoScheduleChecker.Domain.Implementation
 
         public event MovieReales OnRelease;
 
-        public MovieChecker(IMovieCheckerClient movieCheckerClient)
+        public MovieChecker(IMovieCheckerClient movieCheckerClient, IMovieRepository movieRepository)
         {
-            _movieRepository = new MovieRepository();
+            _movieRepository = movieRepository;
             _movieCheckerClient = movieCheckerClient;
         }
 
