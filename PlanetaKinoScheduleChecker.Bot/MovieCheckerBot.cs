@@ -8,10 +8,8 @@ using log4net;
 using PlanetaKinoScheduleChecker.Data;
 using PlanetaKinoScheduleChecker.DataAccess;
 using PlanetaKinoScheduleChecker.DataAccess.Abstract;
-using PlanetaKinoScheduleChecker.DataAccess.Implementation;
 using PlanetaKinoScheduleChecker.Service.Abstract;
 using PlanetaKinoScheduleChecker.Service.Implementation;
-using RestSharp;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types.Enums;
@@ -23,10 +21,18 @@ namespace PlanetaKinoScheduleChecker.Bot
     public class MovieCheckerBot : IMovieCheckerBot
     {
         private ITelegramBotClient _bot;
-        private readonly IMovieRepository MovieRepository = new MovieRepository();
-        private readonly IUserSubscriptionRepository SubscriptionRepository = new UserSubscriptionRepository();
-        private readonly IMovieChecker MovieChecker = new MovieChecker(new MovieCheckerClient(new RestClient(@"https://planetakino.ua"), new CinemaInfoParser()), new MovieRepository());
-        private readonly ILog Logger = LogManager.GetLogger(typeof(MovieCheckerBot));
+        private readonly IMovieRepository _movieRepository ;
+        private readonly IUserSubscriptionRepository _subscriptionRepository;
+        private readonly IMovieChecker _movieChecker;
+
+        private static readonly ILog _logger = LogManager.GetLogger(typeof(MovieCheckerBot));
+
+        public MovieCheckerBot(IMovieRepository movieRepository, IUserSubscriptionRepository subscriptionRepository, IMovieChecker movieChecker)
+        {
+            _movieRepository = movieRepository;
+            _subscriptionRepository = subscriptionRepository;
+            _movieChecker = movieChecker;
+        }
 
         const string Intro = @"Welcome to PlanetaKino Schedule checker bot.
                               You can subscribe for checking when ticket sales start for your favorite movie.
@@ -39,7 +45,7 @@ namespace PlanetaKinoScheduleChecker.Bot
             var message = messageEventArgs.Message;
             if (message == null || message.Type != MessageType.TextMessage) return;
 
-            Logger.Info($"Message recived {message.Chat.Id}");
+            _logger.Info($"Message recived {message.Chat.Id}");
 
             if (message.Text.StartsWith("/start"))
             {
@@ -59,7 +65,7 @@ namespace PlanetaKinoScheduleChecker.Bot
                 await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
                 var movieName = message.Text.Replace("/find", "").Trim(' ');
 
-                var movies = MovieChecker.GetCinemaInfo().Movies.Where(x => x.Title.Contains(movieName));
+                var movies = _movieChecker.GetCinemaInfo().Movies.Where(x => x.Title.Contains(movieName));
                 await SendMovieSuggestions(message.Chat.Id, movies);
             }
             else
@@ -76,7 +82,7 @@ namespace PlanetaKinoScheduleChecker.Bot
 
         private  string GetMovieList()
         {
-            return string.Join($", {Environment.NewLine}", MovieChecker.GetCinemaInfo().Movies.Select(x => x.Title).ToArray());
+            return string.Join($", {Environment.NewLine}", _movieChecker.GetCinemaInfo().Movies.Select(x => x.Title).ToArray());
         }
 
         private  async void BotOnCallbackQueryReceived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
@@ -87,18 +93,16 @@ namespace PlanetaKinoScheduleChecker.Bot
                 $"Subscribed");
         }
 
-
-
         private  Task SubscribeUserForMovie(long chatId, string idStr)
         {
             var id = Int32.Parse(idStr);
-            var movieId = MovieChecker.GetCinemaInfo().Movies.FirstOrDefault(x => x.CinemaMovieId == id);
+            var movieId = _movieChecker.GetCinemaInfo().Movies.FirstOrDefault(x => x.CinemaMovieId == id);
             if (movieId != null)
             {
-                var movie = MovieRepository.GetMovieByExternalId(movieId.CinemaMovieId);
+                var movie = _movieRepository.GetMovieByExternalId(movieId.CinemaMovieId);
                 int idM = 0;
                 if (movie == null)
-                    idM = MovieRepository.AddMovie(new Movie
+                    idM = _movieRepository.AddMovie(new Movie
                     {
                         CinemaMovieId = movieId.CinemaMovieId,
                         Title = movieId.Title,
@@ -107,8 +111,8 @@ namespace PlanetaKinoScheduleChecker.Bot
                     });
                 try
                 {
-                    SubscriptionRepository.Add(new UserSubscription { ChatId = chatId, MovieId = movie?.MovieId ?? idM });
-                    Logger.Info($"Subsciption added for Movie {movieId} {idStr} and User {chatId}");
+                    _subscriptionRepository.Add(new UserSubscription { ChatId = chatId, MovieId = movie?.MovieId ?? idM });
+                    _logger.Info($"Subsciption added for Movie {movieId} {idStr} and User {chatId}");
                 }
                 catch (DuplicateUserSubscriptionError e)
                 {
@@ -121,19 +125,19 @@ namespace PlanetaKinoScheduleChecker.Bot
 
         private  void SendNotification(UserSubscription userSubscription)
         {
-            Logger.Info($"Started sending notification for movie {userSubscription.MovieId} for user {userSubscription.ChatId}");
+            _logger.Info($"Started sending notification for movie {userSubscription.MovieId} for user {userSubscription.ChatId}");
 
             _bot.SendTextMessageAsync(userSubscription.ChatId, GenerateText(userSubscription.MovieId));
             userSubscription.IsNotified = true;
-            SubscriptionRepository.Update(userSubscription);
+            _subscriptionRepository.Update(userSubscription);
 
-            Logger.Info($"Finished sending notification for movie {userSubscription.MovieId} for user {userSubscription.ChatId}");
+            _logger.Info($"Finished sending notification for movie {userSubscription.MovieId} for user {userSubscription.ChatId}");
         }
 
         private  string GenerateText(int movieId)
         {
             var sb = new StringBuilder();
-            sb.Append($"Начался старт продаж на кино {MovieRepository.GetMovieById(movieId).Title}");
+            sb.Append($"Начался старт продаж на кино {_movieRepository.GetMovieById(movieId).Title}");
             sb.Append(Environment.NewLine);
             sb.Append($"Доступные сеансы: /checkshowtime {movieId}");
 
@@ -145,24 +149,24 @@ namespace PlanetaKinoScheduleChecker.Bot
             _bot = new TelegramBotClient(ConfigurationManager.AppSettings["token"]);
             _bot.OnMessage += BotOnOnMessage;
             _bot.OnCallbackQuery += BotOnCallbackQueryReceived;
-            Logger.Info($"Bot initialized {_bot.GetMeAsync().Result.Username}");
+            _logger.Info($"Bot initialized {_bot.GetMeAsync().Result.Username}");
             _bot.StartReceiving();
         }
 
         public  void MovieCheckerOnOnRelease(object sender, MoveRealesReleaseArgs args)
         {
-            var subs = SubscriptionRepository.GetAllByMovieId(args.MovieId);
+            var subs = _subscriptionRepository.GetAllByMovieId(args.MovieId);
 
             var userSubscriptions = subs as IList<UserSubscription> ?? subs.ToList();
 
-            Logger.Info($"Started sending notification for movie {args.MovieId} subs count {userSubscriptions.Count()}");
+            _logger.Info($"Started sending notification for movie {args.MovieId} subs count {userSubscriptions.Count()}");
 
             foreach (var userSubscription in userSubscriptions)
             {
                 SendNotification(userSubscription);
             }
 
-            Logger.Info($"Finished sending notification for movie {args.MovieId} subs count {userSubscriptions.Count()}");
+            _logger.Info($"Finished sending notification for movie {args.MovieId} subs count {userSubscriptions.Count()}");
         }
 
         public  string GetName()
@@ -172,7 +176,7 @@ namespace PlanetaKinoScheduleChecker.Bot
 
         public  void StopReceiving()
         {
-            Logger.Debug("Stoped BOT");
+            _logger.Debug("Stoped BOT");
             _bot.StopReceiving();
         }
     }

@@ -115,6 +115,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PlanetaKinoScheduleChecker.Bot\PlanetaKinoScheduleChecker.Bot.csproj">
+      <Project>{E2D3AA27-2AD1-43BA-B220-474F2E3AAF45}</Project>
+      <Name>PlanetaKinoScheduleChecker.Bot</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlanetaKinoScheduleChecker.DataAccess\PlanetaKinoScheduleChecker.DataAccess.csproj">
       <Project>{0f530b06-f86d-45c7-8f43-bb1a0eb56b53}</Project>
       <Name>PlanetaKinoScheduleChecker.DataAccess</Name>

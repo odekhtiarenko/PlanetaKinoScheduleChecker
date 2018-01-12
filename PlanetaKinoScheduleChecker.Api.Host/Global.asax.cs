@@ -15,7 +15,6 @@ namespace PlanetaKinoScheduleChecker.Api.Host
         {
             AutofacConfig.ConfigureDi(config);
             WebApiConfig.Register(config);
-
         }
     }
 }

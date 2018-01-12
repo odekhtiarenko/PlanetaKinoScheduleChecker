@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using log4net;
 using PlanetaKinoScheduleChecker.Data;
 using PlanetaKinoScheduleChecker.DataAccess.Abstract;
-using PlanetaKinoScheduleChecker.DataAccess.Implementation;
 using PlanetaKinoScheduleChecker.Service.Abstract;
 using PlanetaKinoScheduleChecker.Service.Models;
 
@@ -14,6 +13,7 @@ namespace PlanetaKinoScheduleChecker.Service.Implementation
     {
         private readonly IMovieCheckerClient _movieCheckerClient;
         private readonly IMovieRepository _movieRepository;
+
         private static readonly ILog _logger = LogManager.GetLogger(typeof(MovieChecker));
 
         public delegate void MovieReales(object sender, MoveRealesReleaseArgs args);

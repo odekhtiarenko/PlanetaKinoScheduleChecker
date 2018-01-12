@@ -10,8 +10,8 @@ namespace PlanetaKinoScheduleChecker
 {
     internal class Program
     {
-        private static readonly IMovieChecker _movieChecker = new MovieChecker(new MovieCheckerClient(new RestClient(@"https://planetakino.ua"), new CinemaInfoParser()), new MovieRepository());
-        private static readonly IMovieCheckerBot _bot = new MovieCheckerBot();
+        private static readonly IMovieChecker _movieChecker = new MovieChecker(new MovieCheckerClient(new CinemaInfoParser()), new MovieRepository());
+        private static readonly IMovieCheckerBot _bot = new MovieCheckerBot(new MovieRepository(), new UserSubscriptionRepository(), _movieChecker);
         private static void Main()
         {
             _bot.InitalizeBot();

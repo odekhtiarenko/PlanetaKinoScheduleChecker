@@ -1,4 +1,5 @@
-﻿using PlanetaKinoScheduleChecker.Service.Abstract;
+﻿using System.Configuration;
+using PlanetaKinoScheduleChecker.Service.Abstract;
 using PlanetaKinoScheduleChecker.Service.Models;
 using RestSharp;
 
@@ -8,10 +9,11 @@ namespace PlanetaKinoScheduleChecker.Service.Implementation
     {
         private readonly IRestClient _client;
         private readonly ICinemaInfoParser _cinemaInfoParser;
+        private readonly string _url = ConfigurationManager.AppSettings["planetakinoUrl"];
 
-        public MovieCheckerClient(IRestClient client, ICinemaInfoParser cinemaInfoParser)
+        public MovieCheckerClient(ICinemaInfoParser cinemaInfoParser)
         {
-            _client = client;
+            _client = new RestClient(_url);
             _cinemaInfoParser = cinemaInfoParser;
         }
 
