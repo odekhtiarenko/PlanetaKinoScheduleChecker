@@ -10,3 +10,6 @@ before_build:
   - nuget restore
 test_script:
   - ps: Write-Host "This is PowerShell"
+test:
+  assemblies: 
+    - PlanetaKinoScheduleChecker.Tests.dll
