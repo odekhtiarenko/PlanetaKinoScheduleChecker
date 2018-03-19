@@ -9,8 +9,6 @@ namespace PlanetaKinoScheduleChecker.DataAccess.Implementation
     {
         public int Add(UserSubscription userSubscription)
         {
-
-
             using (var conn = ConnectionFactory.GetConnection())
             {
                 var entry = conn.QuerySingleOrDefault<UserSubscription>(SqlText.SubscriptionCheck,

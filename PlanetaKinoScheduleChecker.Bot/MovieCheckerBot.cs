@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Dynamic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
+using Newtonsoft.Json;
 using PlanetaKinoScheduleChecker.Data;
 using PlanetaKinoScheduleChecker.DataAccess;
 using PlanetaKinoScheduleChecker.DataAccess.Abstract;
@@ -12,6 +15,7 @@ using PlanetaKinoScheduleChecker.Service.Abstract;
 using PlanetaKinoScheduleChecker.Service.Implementation;
 using Telegram.Bot;
 using Telegram.Bot.Args;
+using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.InlineKeyboardButtons;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -21,7 +25,7 @@ namespace PlanetaKinoScheduleChecker.Bot
     public class MovieCheckerBot : IMovieCheckerBot
     {
         private ITelegramBotClient _bot;
-        private readonly IMovieRepository _movieRepository ;
+        private readonly IMovieRepository _movieRepository;
         private readonly IUserSubscriptionRepository _subscriptionRepository;
         private readonly IMovieChecker _movieChecker;
 
@@ -34,14 +38,9 @@ namespace PlanetaKinoScheduleChecker.Bot
             _movieChecker = movieChecker;
         }
 
-        const string Intro = @"Welcome to PlanetaKino Schedule checker bot.
-                              You can subscribe for checking when ticket sales start for your favorite movie.
-                              Please use command /subscribe {movie  title from planetakino web}, you will automatically after you will be notified
-                              /checksubscribtion - shows all your subscriptions
-                              /unsubscribe  {movie  title from planetakino web} unsubscripbe you from you subscription";
-
-        private  async void BotOnOnMessage(object sender, MessageEventArgs messageEventArgs)
+        private async void BotOnOnMessage(object sender, MessageEventArgs messageEventArgs)
         {
+
             var message = messageEventArgs.Message;
             if (message == null || message.Type != MessageType.TextMessage) return;
 
@@ -51,14 +50,8 @@ namespace PlanetaKinoScheduleChecker.Bot
             {
                 await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
 
-                await _bot.SendTextMessageAsync(message.Chat.Id, Intro);
-            }
-            else if (message.Text.StartsWith("/showlist"))
-            {
-                await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
-
-                await _bot.SendTextMessageAsync(message.Chat.Id,
-                    $"Pick a Movie: {Environment.NewLine} {GetMovieList()}");
+                var movies = _movieChecker.GetCinemaInfo().Movies;
+                await SendMovieSuggestions(message.Chat.Id, movies);
             }
             else if (message.Text.StartsWith("/find"))
             {
@@ -70,30 +63,70 @@ namespace PlanetaKinoScheduleChecker.Bot
             }
             else
             {
-                await _bot.SendTextMessageAsync(message.Chat.Id, Intro);
+                await _bot.SendTextMessageAsync(message.Chat.Id, "Try again");
             }
         }
 
-        private  async Task SendMovieSuggestions(long chatId, IEnumerable<Movie> movies)
+        private async Task SendMovieSuggestions(long chatId, IEnumerable<Movie> movies, int skip = 0, int take = 20)
         {
+            InlineKeyboardButton[][] keyboard = CreateKeyboard(movies, skip, take);
+
             await _bot.SendTextMessageAsync(chatId, "Pick a Movie:",
-                replyMarkup: new InlineKeyboardMarkup(movies.Select(x => InlineKeyboardButton.WithCallbackData(x.Title, x.CinemaMovieId.ToString())).ToArray()));
+                replyMarkup: new InlineKeyboardMarkup(keyboard));
         }
 
-        private  string GetMovieList()
+        private InlineKeyboardButton[][] CreateKeyboard(IEnumerable<Movie> movies, int skip = 0, int take = 20)
         {
-            return string.Join($", {Environment.NewLine}", _movieChecker.GetCinemaInfo().Movies.Select(x => x.Title).ToArray());
+            var keyboard = new List<InlineKeyboardButton[]>();
+
+            InlineKeyboardButton[] el = new InlineKeyboardButton[3];
+
+            var i = 0;
+            foreach (var movie in movies.Skip(skip).Take(take))
+            {
+                if (i == el.Length)
+                {
+                    i = 0;
+                    keyboard.Add(el);
+                    el = new InlineKeyboardButton[3];
+                }
+                el[i] = InlineKeyboardButton.WithCallbackData(movie.Title, JsonConvert.SerializeObject(new SelectMovieCallBack() { MoveiId = movie.CinemaMovieId.ToString() }));
+                i++;
+            }
+
+            keyboard.Add(new[]{ InlineKeyboardButton.WithCallbackData(skip==0 ?"|":"Previous",JsonConvert.SerializeObject(new SelectMovieCallBack(){Skip = skip-take, Take = take})),
+                InlineKeyboardButton.WithCallbackData(skip+take > movies.Count() ? "|": "Next",JsonConvert.SerializeObject(new SelectMovieCallBack(){Skip = skip+take, Take = take}))});
+
+            return keyboard.ToArray();
         }
 
-        private  async void BotOnCallbackQueryReceived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
+        private async void BotOnCallbackQueryReceived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
         {
-            await SubscribeUserForMovie(callbackQueryEventArgs.CallbackQuery.From.Id, callbackQueryEventArgs.CallbackQuery.Data);
+            var selectMovieCallBack =
+                JsonConvert.DeserializeObject<SelectMovieCallBack>(callbackQueryEventArgs.CallbackQuery.Data);
 
-            await _bot.SendTextMessageAsync(callbackQueryEventArgs.CallbackQuery.From.Id,
-                $"Subscribed");
+            if (selectMovieCallBack.MoveiId != null)
+            {
+                await SubscribeUserForMovie(callbackQueryEventArgs.CallbackQuery.From.Id, selectMovieCallBack.MoveiId);
+
+                await _bot.SendTextMessageAsync(callbackQueryEventArgs.CallbackQuery.From.Id,
+                    $"Subscribed");
+            }
+            else
+            {
+                await SendUpdateMovieSuggestions(callbackQueryEventArgs.CallbackQuery.Message.MessageId, callbackQueryEventArgs.CallbackQuery.From.Id,
+                    _movieChecker.GetCinemaInfo().Movies, selectMovieCallBack.Skip, selectMovieCallBack.Take);
+            }
         }
 
-        private  Task SubscribeUserForMovie(long chatId, string idStr)
+        private async Task SendUpdateMovieSuggestions(int messageId, int fromId, IEnumerable<Movie> movies, int skip, int take)
+        {
+            InlineKeyboardButton[][] keyboard = CreateKeyboard(movies, skip, take);
+
+            await _bot.EditMessageReplyMarkupAsync(fromId, messageId, replyMarkup: new InlineKeyboardMarkup(keyboard));
+        }
+
+        private Task SubscribeUserForMovie(long chatId, string idStr)
         {
             var id = Int32.Parse(idStr);
             var movieId = _movieChecker.GetCinemaInfo().Movies.FirstOrDefault(x => x.CinemaMovieId == id);
@@ -116,14 +149,14 @@ namespace PlanetaKinoScheduleChecker.Bot
                 }
                 catch (DuplicateUserSubscriptionError e)
                 {
-
+                    _bot.SendTextMessageAsync(chatId, "You've already subscribed for this movie");
                 }
             }
 
             return Task.FromResult(0);
         }
 
-        private  void SendNotification(UserSubscription userSubscription)
+        private void SendNotification(UserSubscription userSubscription)
         {
             _logger.Info($"Started sending notification for movie {userSubscription.MovieId} for user {userSubscription.ChatId}");
 
@@ -134,7 +167,7 @@ namespace PlanetaKinoScheduleChecker.Bot
             _logger.Info($"Finished sending notification for movie {userSubscription.MovieId} for user {userSubscription.ChatId}");
         }
 
-        private  string GenerateText(int movieId)
+        private string GenerateText(int movieId)
         {
             var sb = new StringBuilder();
             sb.Append($"Начался старт продаж на кино {_movieRepository.GetMovieById(movieId).Title}");
@@ -144,7 +177,7 @@ namespace PlanetaKinoScheduleChecker.Bot
             return sb.ToString();
         }
 
-        public  void InitalizeBot()
+        public void InitalizeBot()
         {
             _bot = new TelegramBotClient(ConfigurationManager.AppSettings["token"]);
             _bot.OnMessage += BotOnOnMessage;
@@ -153,7 +186,7 @@ namespace PlanetaKinoScheduleChecker.Bot
             _bot.StartReceiving();
         }
 
-        public  void MovieCheckerOnOnRelease(object sender, MoveRealesReleaseArgs args)
+        public void MovieCheckerOnOnRelease(object sender, MoveRealesReleaseArgs args)
         {
             var subs = _subscriptionRepository.GetAllByMovieId(args.MovieId);
 
@@ -169,12 +202,12 @@ namespace PlanetaKinoScheduleChecker.Bot
             _logger.Info($"Finished sending notification for movie {args.MovieId} subs count {userSubscriptions.Count()}");
         }
 
-        public  string GetName()
+        public string GetName()
         {
             return _bot.GetMeAsync().Result.Username;
         }
 
-        public  void StopReceiving()
+        public void StopReceiving()
         {
             _logger.Debug("Stoped BOT");
             _bot.StopReceiving();

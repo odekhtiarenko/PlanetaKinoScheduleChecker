@@ -30,7 +30,7 @@ namespace PlanetaKinoScheduleChecker.Service.Implementation
             var lst = new List<ShowTime>();
             foreach (var element in showTimeElements)
             {
-                foreach (var showElemens in element.Elements().Where(x=>x.Name=="show"))
+                foreach (var showElemens in element.Elements().Where(x => x.Name == "show"))
                 {
                     var fullDate = DateTime.Parse(showElemens.Attribute("full-date").Value);
                     var cinemaName = showElemens.Attribute("theatre-id").Value;
@@ -49,10 +49,12 @@ namespace PlanetaKinoScheduleChecker.Service.Implementation
         {
             foreach (var element in movieElements)
             {
+                DateTime start; 
+                DateTime end;
                 var id = Int32.Parse(element.Attribute("id").Value);
                 var title = element.Elements().SingleOrDefault(e => e.Name == "title").Value;
-                var start = DateTime.Parse(element.Elements().SingleOrDefault(e => e.Name == "dt-start").Value);
-                var end = DateTime.Parse(element.Elements().SingleOrDefault(e => e.Name == "dt-end").Value);
+                DateTime.TryParse(element.Elements().SingleOrDefault(e => e.Name == "dt-start").Value, out start);
+                DateTime.TryParse(element.Elements().SingleOrDefault(e => e.Name == "dt-end").Value, out end);
                 var movie = new Movie
                 {
                     CinemaMovieId = id,

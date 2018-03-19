@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using log4net;
@@ -50,7 +51,7 @@ namespace PlanetaKinoScheduleChecker.Service.Implementation
                     }
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(0.3));
+                await Task.Delay(TimeSpan.FromMinutes(double.Parse(ConfigurationManager.AppSettings["CheckTime"])));
             }
         }
 
