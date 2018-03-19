@@ -1,0 +1,12 @@
+version: '1.0.{build}'
+branches:
+  only:
+    - master
+image: Visual Studio 2017
+platform: Any CPU
+configuration: Release
+before_build:
+  - ps: Write-Host "This is PowerShell"
+  - nuget restore
+test_script:
+  - ps: Write-Host "This is PowerShell"
