@@ -53,5 +53,14 @@ namespace PlanetaKinoScheduleChecker.DataAccess.Implementation
                 return userSubscriptions;
             }
         }
+
+        public IEnumerable<UserSubscription> GetAllByChatId(int chatId, bool isNotified = false)
+        {
+            using (var conn = ConnectionFactory.GetConnection())
+            {
+                var userSubscriptions = conn.Query<UserSubscription>(SqlText.GetSubscriptionByChatId, new { ChatId = chatId, IsNotified = isNotified });
+                return userSubscriptions;
+            }
+        }
     }
 }

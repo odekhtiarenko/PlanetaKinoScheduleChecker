@@ -57,7 +57,6 @@ _movieChecker = new MovieChecker(_movieCheckerClientMock.Object, _movieRepositor
 
             res = _movieChecker.CheckIfTicketsAvailiable(moviename);
             Assert.AreEqual(res, true);
-
         }
     }
 }

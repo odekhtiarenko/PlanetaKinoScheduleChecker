@@ -10,5 +10,6 @@ namespace PlanetaKinoScheduleChecker.DataAccess.Abstract
         int Add(UserSubscription userSubscription);
         void Update(UserSubscription userSubscription);
         IEnumerable<UserSubscription> GetAllByMovieId(int movieId, bool isNotified = false);
+        IEnumerable<UserSubscription> GetAllByChatId(int chatId, bool isNotified = false);
     }
 }

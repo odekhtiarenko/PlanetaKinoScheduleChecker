@@ -10,6 +10,7 @@
         public const string GetMovieByCinemaMovieId = "SELECT * FROM Movies WHERE CinemaMovieId = @CinemaMovieId ";
         public const string GetMovieByMovieId = "SELECT * FROM Movies WHERE MovieId = @MovieId ";
         public const string GetSubscriptionByMovieId = "SELECT * FROM UserSubscriptions WHERE MovieId = @MovieId and [IsNotified] = @IsNotified";
+        public const string GetSubscriptionByChatId = "SELECT * FROM UserSubscriptions WHERE ChatId = @ChatId and [IsNotified] = @IsNotified";
         public const string UpdateSubscription = "UPDATE [PlanetaKinoScheduleChecker].[dbo].[UserSubscriptions] SET [ChatId] = @ChatId,[MovieId] = @MovieId,[IsNotified] = @IsNotified,[City] = @City WHERE UserSubscriptionId = @UserSubscriptionId";
         public const string GetAvailiableSubscription = @"SELECT *
                                                           FROM Movies m

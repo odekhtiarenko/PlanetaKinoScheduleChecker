@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Dynamic;
 using System.Linq;
-using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using log4net;
@@ -40,7 +38,6 @@ namespace PlanetaKinoScheduleChecker.Bot
 
         private async void BotOnOnMessage(object sender, MessageEventArgs messageEventArgs)
         {
-
             var message = messageEventArgs.Message;
             if (message == null || message.Type != MessageType.TextMessage) return;
 
@@ -48,18 +45,7 @@ namespace PlanetaKinoScheduleChecker.Bot
 
             if (message.Text.StartsWith("/start"))
             {
-                await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
-
-                var movies = _movieChecker.GetCinemaInfo().Movies;
-                await SendMovieSuggestions(message.Chat.Id, movies);
-            }
-            else if (message.Text.StartsWith("/find"))
-            {
-                await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
-                var movieName = message.Text.Replace("/find", "").Trim(' ');
-
-                var movies = _movieChecker.GetCinemaInfo().Movies.Where(x => x.Title.Contains(movieName));
-                await SendMovieSuggestions(message.Chat.Id, movies);
+                await SendIntro(message.Chat.Id);
             }
             else
             {
@@ -67,21 +53,32 @@ namespace PlanetaKinoScheduleChecker.Bot
             }
         }
 
-        private async Task SendMovieSuggestions(long chatId, IEnumerable<Movie> movies, int skip = 0, int take = 20)
+        private async Task SendIntro(long chatId)
         {
-            InlineKeyboardButton[][] keyboard = CreateKeyboard(movies, skip, take);
+            var markup = new InlineKeyboardMarkup(new[] {
+                InlineKeyboardButton.WithCallbackData("Movies", ConvertToJson(new BotCallBack(){Action = BotAction.GetMovies})),
+                InlineKeyboardButton.WithCallbackData("Schedule", ConvertToJson(new BotCallBack(){Action = BotAction.GetSchedule})),
+                InlineKeyboardButton.WithCallbackData("My subscriptions", ConvertToJson(new BotCallBack(){Action = BotAction.GetSubscriptions}))
+            });
+
+            await _bot.SendTextMessageAsync(chatId, "Pick an action", replyMarkup: markup);
+        }
+
+        private async Task SendMovieSuggestions(long chatId, BotAction action, int skip = 0, int take = 20)
+        {
+            var keyboard = CreateKeyboard(action, skip, take);
 
             await _bot.SendTextMessageAsync(chatId, "Pick a Movie:",
                 replyMarkup: new InlineKeyboardMarkup(keyboard));
         }
 
-        private InlineKeyboardButton[][] CreateKeyboard(IEnumerable<Movie> movies, int skip = 0, int take = 20)
+        private InlineKeyboardButton[][] CreateKeyboard(BotAction action, int skip = 0, int take = 20)
         {
             var keyboard = new List<InlineKeyboardButton[]>();
 
             InlineKeyboardButton[] el = new InlineKeyboardButton[3];
-
             var i = 0;
+            var movies = _movieChecker.GetCinemaInfo().Movies;
             foreach (var movie in movies.Skip(skip).Take(take))
             {
                 if (i == el.Length)
@@ -90,40 +87,140 @@ namespace PlanetaKinoScheduleChecker.Bot
                     keyboard.Add(el);
                     el = new InlineKeyboardButton[3];
                 }
-                el[i] = InlineKeyboardButton.WithCallbackData(movie.Title, JsonConvert.SerializeObject(new SelectMovieCallBack() { MoveiId = movie.CinemaMovieId.ToString() }));
+                el[i] = InlineKeyboardButton.WithCallbackData(movie.Title, ConvertToJson(new BotCallBack() { Action = action, MoveiId = movie.CinemaMovieId.ToString() }));
                 i++;
             }
 
-            keyboard.Add(new[]{ InlineKeyboardButton.WithCallbackData(skip==0 ?"|":"Previous",JsonConvert.SerializeObject(new SelectMovieCallBack(){Skip = skip-take, Take = take})),
-                InlineKeyboardButton.WithCallbackData(skip+take > movies.Count() ? "|": "Next",JsonConvert.SerializeObject(new SelectMovieCallBack(){Skip = skip+take, Take = take}))});
+            keyboard.Add(new[]{ InlineKeyboardButton.WithCallbackData(skip==0 ?"|":"Previous", ConvertToJson(new BotCallBack(){ Action = BotAction.GetPreviousSubscriptionMoviePage, Skip = skip-take})),
+                InlineKeyboardButton.WithCallbackData(skip+take > movies.Count() ? "|": "Next", ConvertToJson(new BotCallBack(){Action = BotAction.GetNextSubscriptionMoviesPage, Skip = skip+take}))});
 
             return keyboard.ToArray();
         }
 
+        private string ConvertToJson(BotCallBack botCallBack)
+        {
+            return JsonConvert.SerializeObject(botCallBack, Formatting.None,
+                new JsonSerializerSettings() {NullValueHandling = NullValueHandling.Ignore});
+        }
+
         private async void BotOnCallbackQueryReceived(object sender, CallbackQueryEventArgs callbackQueryEventArgs)
         {
-            var selectMovieCallBack =
-                JsonConvert.DeserializeObject<SelectMovieCallBack>(callbackQueryEventArgs.CallbackQuery.Data);
+            var botCallBack =
+                JsonConvert.DeserializeObject<BotCallBack>(callbackQueryEventArgs.CallbackQuery.Data);
+            var chatId = callbackQueryEventArgs.CallbackQuery.From.Id;
 
-            if (selectMovieCallBack.MoveiId != null)
+            switch (botCallBack.Action)
             {
-                await SubscribeUserForMovie(callbackQueryEventArgs.CallbackQuery.From.Id, selectMovieCallBack.MoveiId);
-
-                await _bot.SendTextMessageAsync(callbackQueryEventArgs.CallbackQuery.From.Id,
-                    $"Subscribed");
-            }
-            else
-            {
-                await SendUpdateMovieSuggestions(callbackQueryEventArgs.CallbackQuery.Message.MessageId, callbackQueryEventArgs.CallbackQuery.From.Id,
-                    _movieChecker.GetCinemaInfo().Movies, selectMovieCallBack.Skip, selectMovieCallBack.Take);
+                case BotAction.GetMovies:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await SendMovieSuggestions(chatId, BotAction.SubscribeForMovie);
+                    break;
+                case BotAction.SubscribeForMovie:
+                    await SubscribeUserForMovie(chatId, botCallBack.MoveiId);
+                    await _bot.AnswerCallbackQueryAsync(callbackQueryEventArgs.CallbackQuery.Id,
+                        $"Subscribed");
+                    break;
+                case BotAction.GetNextSubscriptionMoviesPage:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await UpdateMovieSuggestions(chatId, callbackQueryEventArgs.CallbackQuery.Message.MessageId, botCallBack.Skip.Value, BotAction.SubscribeForMovie);
+                    break;
+                case BotAction.GetPreviousSubscriptionMoviePage:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await UpdateMovieSuggestions(chatId, callbackQueryEventArgs.CallbackQuery.Message.MessageId, botCallBack.Skip.Value, BotAction.SubscribeForMovie);
+                    break;
+                case BotAction.GetSubscriptions:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await SendSubscriptions(chatId);
+                    break;
+                case BotAction.GetSchedule:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await SendSchedule(chatId);
+                    break;
+                case BotAction.GetScheduleByMovie:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await SendMovieSuggestions(chatId, BotAction.GetMovieSchedule);
+                    break;
+                case BotAction.GetScheduleByDate:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await SendSchedule(chatId);
+                    break;
+                case BotAction.GetNextScheduleMoviesPage:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await UpdateMovieSuggestions(chatId, callbackQueryEventArgs.CallbackQuery.Message.MessageId, botCallBack.Skip.Value, BotAction.GetMovieSchedule);
+                    break;
+                case BotAction.GetPreviousScheduleMoviePage:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await UpdateMovieSuggestions(chatId, callbackQueryEventArgs.CallbackQuery.Message.MessageId, botCallBack.Skip.Value, BotAction.GetMovieSchedule);
+                    break;
+                case BotAction.GetMovieSchedule:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await SendMovieSchedule(chatId, botCallBack.MoveiId);
+                    break;
+                default:
+                    await _bot.SendChatActionAsync(chatId, ChatAction.Typing);
+                    await SendIntro(chatId);
+                    break;
             }
         }
 
-        private async Task SendUpdateMovieSuggestions(int messageId, int fromId, IEnumerable<Movie> movies, int skip, int take)
+        private async Task SendMovieSchedule(int chatId, string moveiId)
         {
-            InlineKeyboardButton[][] keyboard = CreateKeyboard(movies, skip, take);
+            var id = int.Parse(moveiId);
+            var movieSchedule = _movieChecker.GetCinemaInfo().ShowTimes.Where(x=>x.MovieId== id);
+            var sb = new StringBuilder();
 
-            await _bot.EditMessageReplyMarkupAsync(fromId, messageId, replyMarkup: new InlineKeyboardMarkup(keyboard));
+            foreach (var x in movieSchedule)
+            {
+                sb.Append(
+                    $"{x.Theatre} {x.Technology} {x.FullDate.ToShortDateString()} {x.FullDate.ToShortTimeString()}");
+            }
+
+            await _bot.SendTextMessageAsync(chatId, sb.ToString());
+        }
+
+        private async Task SendSchedule(int chatId)
+        {
+            var keyboard = new InlineKeyboardMarkup(new []
+            {
+                InlineKeyboardButton.WithCallbackData("By Movie", ConvertToJson(new BotCallBack(){Action = BotAction.GetScheduleByMovie})),
+                InlineKeyboardButton.WithCallbackData("By Date", ConvertToJson(new BotCallBack(){Action = BotAction.GetScheduleByDate})),
+            });
+
+            await _bot.SendTextMessageAsync(chatId, "Pick:", replyMarkup: keyboard);
+        }
+
+        private InlineKeyboardButton[] GetDates()
+        {
+            var t = _movieChecker.GetCinemaInfo();
+            var dateTimes = t.ShowTimes.Select(x => x.FullDate).Distinct().ToArray();
+
+            return dateTimes.Select(x => InlineKeyboardButton.WithCallbackData($"{x.Day} {x.Month}",
+                ConvertToJson(
+                    new BotCallBack() {Action = BotAction.GetMoviesGetScheduleByDay, Date = x}))).ToArray();
+        }
+
+        private async Task SendSubscriptions(int chatId)
+        {
+            var subscriptions = _subscriptionRepository.GetAllByChatId(chatId);
+            InlineKeyboardButton[] t = subscriptions.Select(x => InlineKeyboardButton.WithCallbackData(x.MovieId.ToString(),
+                    ConvertToJson(
+                        new BotCallBack() { Action = BotAction.DeleteSubscription, SubscriptionMovieId = x.MovieId })))
+                .ToArray();
+            var keyboard = new InlineKeyboardMarkup(t);
+
+            await _bot.SendTextMessageAsync(chatId, "Your subscriptions", replyMarkup: keyboard);
+        }
+
+        private async Task UpdateMovieSuggestions(int chatId, int messageId, int skip, BotAction action)
+        {
+            var keyboard = CreateKeyboard(action, skip);
+
+            await _bot.EditMessageReplyMarkupAsync(chatId, messageId, replyMarkup: new InlineKeyboardMarkup(keyboard));
+        }
+
+        private async void BotOnInlineQueryReceived(object sender, InlineQueryEventArgs inlineQueryEventArgs)
+        {
+            await _bot.SendTextMessageAsync(inlineQueryEventArgs.InlineQuery.From.Id, "Pick a Movie:");
         }
 
         private Task SubscribeUserForMovie(long chatId, string idStr)
@@ -182,6 +279,7 @@ namespace PlanetaKinoScheduleChecker.Bot
             _bot = new TelegramBotClient(ConfigurationManager.AppSettings["token"]);
             _bot.OnMessage += BotOnOnMessage;
             _bot.OnCallbackQuery += BotOnCallbackQueryReceived;
+            _bot.OnInlineQuery += BotOnInlineQueryReceived;
             _logger.Info($"Bot initialized {_bot.GetMeAsync().Result.Username}");
             _bot.StartReceiving();
         }

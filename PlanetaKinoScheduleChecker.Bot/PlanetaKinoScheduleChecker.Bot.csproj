@@ -109,11 +109,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CallBack.cs" />
     <Compile Include="IMovieCheckerBot.cs" />
     <Compile Include="MovieCheckerBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectMovieCallBack.cs" />
+    <Compile Include="BotCallBack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
